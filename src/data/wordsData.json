@@ -1,0 +1,219 @@
+{
+  "words": [
+    {
+      "id": 1,
+      "value": "fireman",
+      "syllables": [
+        "fire",
+        "man"
+      ]
+    },
+    {
+      "id": 2,
+      "value": "doctor",
+      "syllables": [
+        "doc",
+        "tor"
+      ]
+    },
+    {
+      "id": 3,
+      "value": "student",
+      "syllables": [
+        "stu",
+        "dent"
+      ]
+    },
+    {
+      "id": 4,
+      "value": "nurse",
+      "syllables": [
+        "nurse"
+      ]
+    },
+    {
+      "id": 5,
+      "value": "vet",
+      "syllables": [
+        "vet"
+      ]
+    },
+    {
+      "id": 6,
+      "value": "teacher",
+      "syllables": [
+        "tea",
+        "cher"
+      ]
+    },
+    {
+      "id": 7,
+      "value": "policeman",
+      "syllables": [
+        "po",
+        "lice",
+        "man"
+      ]
+    },
+    {
+      "id": 8,
+      "value": "actor",
+      "syllables": [
+        "ac",
+        "tor"
+      ]
+    },
+    {
+      "id": 9,
+      "value": "postman",
+      "syllables": [
+        "post",
+        "man"
+      ]
+    },
+    {
+      "id": 10,
+      "value": "scientist",
+      "syllables": [
+        "sci",
+        "en",
+        "tist"
+      ]
+    },
+    {
+      "id": 11,
+      "value": "dentist",
+      "syllables": [
+        "den",
+        "tist"
+      ]
+    },
+    {
+      "id": 12,
+      "value": "pharmacist",
+      "syllables": [
+        "phar",
+        "ma",
+        "cist"
+      ]
+    },
+    {
+      "id": 13,
+      "value": "farmer",
+      "syllables": [
+        "far",
+        "mer"
+      ]
+    },
+    {
+      "id": 14,
+      "value": "what",
+      "syllables": [
+        "what"
+      ]
+    },
+    {
+      "id": 15,
+      "value": "is",
+      "syllables": [
+        "is"
+      ]
+    },
+    {
+      "id": 16,
+      "value": "your",
+      "syllables": [
+        "your"
+      ]
+    },
+    {
+      "id": 17,
+      "value": "name",
+      "syllables": [
+        "name"
+      ]
+    },
+    {
+      "id": 18,
+      "value": "occupation",
+      "syllables": [
+        "occ",
+        "u",
+        "pa",
+        "tion"
+      ]
+    },
+    {
+      "id": 19,
+      "value": "I",
+      "syllables": [
+        "I"
+      ]
+    },
+    {
+      "id": 20,
+      "value": "am",
+      "syllables": [
+        "am"
+      ]
+    },
+    {
+      "id": 21,
+      "value": "a",
+      "syllables": [
+        "a"
+      ]
+    },
+    {
+      "id": 22,
+      "value": "student",
+      "syllables": [
+        "stu",
+        "dent"
+      ]
+    },
+    {
+      "id": 23,
+      "value": "years",
+      "syllables": [
+        "years"
+      ]
+    },
+    {
+      "id": 24,
+      "value": "old",
+      "syllables": [
+        "old"
+      ]
+    },
+    {
+      "id": 25,
+      "value": "chef",
+      "syllables": [
+        "chef"
+      ]
+    },
+    {
+      "id": 26,
+      "value": "pilot",
+      "syllables": [
+        "pi",
+        "lot"
+      ]
+    },
+    {
+      "id": 27,
+      "value": "do",
+      "syllables": [
+        "do"
+      ]
+    },
+    {
+      "id": 28,
+      "value": "job",
+      "syllables": [
+        "job"
+      ]
+    }
+  ]
+}
