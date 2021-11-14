@@ -1,15 +1,18 @@
 import Header from './components/Header';
 import SightWords from './components/SightWords';
-import sightWords from './data/wordsData.json';
+import RandomWords from './components/RandomWords';
+
+import sightWordsData from './data/wordsData.json';
 
 
 function App() {
-  const { words } = sightWords;
+  const { words } = sightWordsData;
 
   return (
     <div className="App">
       <Header />
-      <SightWords words={words} />
+      {/*<SightWords words={words} /> */}
+      <RandomWords words={words} />
     </div>
   );
 }
