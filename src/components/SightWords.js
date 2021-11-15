@@ -3,9 +3,13 @@ import { Container, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleRight, faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
+
+import sightWordsData from '../data/wordsData.json';
+import LoadingSpinner from './LoadingSpinner';
 import Word from './Word';
 
-const SightWords = ({ words }) => {
+const SightWords = () => {
+  const { words } = sightWordsData;
   const [wordIndex, setWordIndex] = useState(0);
 
   const incrementWordIndex = () => {
@@ -15,6 +19,8 @@ const SightWords = ({ words }) => {
   const decrementWordIndex = () => {
     setWordIndex(wordIndex - 1);
   }
+
+  if (!words.length) return <LoadingSpinner />
 
   return (
     <Container className="site-content">

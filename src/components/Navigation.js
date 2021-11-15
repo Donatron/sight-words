@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Navbar, NavbarToggler, Collapse, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 const Navigation = () => {
@@ -25,10 +26,18 @@ const Navigation = () => {
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                  All Words
+                  <NavItem>
+                    <Link to="/">
+                      All Words
+                    </Link>
+                  </NavItem>
                 </DropdownItem>
                 <DropdownItem>
-                  Random Words
+                  <NavItem>
+                    <Link to="/random-words">
+                      Random Words
+                    </Link>
+                  </NavItem>
                 </DropdownItem>
                 <DropdownItem>
                   Update Word List
