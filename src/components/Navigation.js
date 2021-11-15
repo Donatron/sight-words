@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Navbar, NavbarToggler, Collapse, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 const Navigation = () => {
@@ -25,13 +26,25 @@ const Navigation = () => {
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                  All Words
+                  <NavItem>
+                    <Link to="/">
+                      All Words
+                    </Link>
+                  </NavItem>
                 </DropdownItem>
                 <DropdownItem>
-                  Random Words
+                  <NavItem>
+                    <Link to="/random-words">
+                      Random Words
+                    </Link>
+                  </NavItem>
                 </DropdownItem>
                 <DropdownItem>
-                  Update Word List
+                  <NavItem>
+                    <Link to="/update-word-list">
+                      Update Word List
+                    </Link>
+                  </NavItem>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
@@ -47,13 +60,25 @@ const Navigation = () => {
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                  All Phrases
+                  <NavItem>
+                    <Link to="/phrases">
+                      All Phrases
+                    </Link>
+                  </NavItem>
                 </DropdownItem>
                 <DropdownItem>
-                  Random Phrases
+                  <NavItem>
+                    <Link to="/random-phrases">
+                      Random Phrases
+                    </Link>
+                  </NavItem>
                 </DropdownItem>
                 <DropdownItem>
-                  Update Phrase List
+                  <NavItem>
+                    <Link to="/update-phrase-list">
+                      Update Phrase List
+                    </Link>
+                  </NavItem>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

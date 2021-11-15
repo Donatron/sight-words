@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
 
+import sightWordsData from '../data/wordsData.json';
 import Word from './Word';
 
-const RandomWords = ({ words }) => {
+const RandomWords = () => {
+  const { words } = sightWordsData;
+
   const generateRandomWordIndex = () => {
     return Math.floor(Math.random() * (words.length - 1));
   }
