@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, NavbarToggler, Collapse, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Navbar, NavbarToggler, Collapse, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 const Navigation = () => {
   return (
@@ -24,7 +24,7 @@ const Navigation = () => {
               >
                 Sight Words
               </DropdownToggle>
-              <DropdownMenu right>
+              <DropdownMenu end>
                 <DropdownItem>
                   <NavItem>
                     <Link to="/">
@@ -58,7 +58,7 @@ const Navigation = () => {
               >
                 Phrases
               </DropdownToggle>
-              <DropdownMenu right>
+              <DropdownMenu end>
                 <DropdownItem>
                   <NavItem>
                     <Link to="/phrases">
