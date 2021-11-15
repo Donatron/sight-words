@@ -1,14 +1,19 @@
 .navbar {
   background-color: $color-primary;
 
-  .nav-link {
-    color: $color-secondary;
-    padding: 8px;
-    transition: all 0.2s ease-in;
+  .nav-item {
+    a {
+      color: $color-secondary;
+      padding: 8px;
+      text-decoration: none;
+    }
 
-    &:hover {
-      color: $color-secondary-tint;
-      opacity: 0.8
+    .dropdown-item {
+      @include transition;
+
+      &:hover {
+        background-color: $color-primary-shade;
+      }
     }
   }
 }

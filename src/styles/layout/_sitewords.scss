@@ -5,9 +5,10 @@
     position: relative;
 
     .svg-inline--fa {
+      @include transition;
+
       font-size: 2.5rem;
       color: $color-primary-shade;
-      transition: all 0.2s ease-in;
 
       &:hover {
         color: $color-primary-tint;
