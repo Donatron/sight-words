@@ -1,0 +1,14 @@
+.navbar {
+  background-color: $color-primary;
+
+  .nav-link {
+    color: $color-secondary;
+    padding: 8px;
+    transition: all 0.2s ease-in;
+
+    &:hover {
+      color: $color-secondary-tint;
+      opacity: 0.8
+    }
+  }
+}
