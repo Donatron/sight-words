@@ -1,0 +1,27 @@
+.site-content_content {
+  &-buttons {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+
+    .svg-inline--fa {
+      font-size: 2.5rem;
+      color: $color-primary-shade;
+      transition: all 0.2s ease-in;
+
+      &:hover {
+        color: $color-primary-tint;
+        cursor: pointer;
+      }
+    }
+
+    &-right {
+      position: absolute;
+      right: 45px;
+    }
+    &-left {
+      position: absolute;
+      left: 45px;
+    }
+  }
+}

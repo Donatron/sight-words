@@ -1,13 +1,49 @@
 {
   "phrases": [
-    "What do you do?",
-    "What is your job?",
-    "What is your name?",
-    "How old are you?",
-    "What is your occupation?",
-    "I am a ____",
-    "I am an ____",
-    "I am ____ years old",
-    "My name is ____"
+    {
+      "id": 1,
+      "value": "What do you do?",
+      "complete": false
+    },
+    {
+      "id": 2,
+      "value": "What is your job?",
+      "complete": false
+    },
+    {
+      "id": 3,
+      "value": "What is your name?",
+      "complete": false
+    },
+    {
+      "id": 4,
+      "value": "How old are you?",
+      "complete": false
+    },
+    {
+      "id": 5,
+      "value": "What is your occupation?",
+      "complete": false
+    },
+    {
+      "id": 6,
+      "value": "I am a ____?",
+      "complete": false
+    },
+    {
+      "id": 7,
+      "value": "I am an ____?",
+      "complete": false
+    },
+    {
+      "id": 8,
+      "value": "I am ____ years old?",
+      "complete": false
+    },
+    {
+      "id": 9,
+      "value": "My name is ____",
+      "complete": false
+    }
   ]
 }
