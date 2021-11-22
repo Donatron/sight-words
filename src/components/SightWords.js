@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleRight, faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
@@ -6,11 +7,15 @@ import { faArrowAltCircleRight, faArrowAltCircleLeft } from '@fortawesome/free-s
 
 import sightWordsData from '../data/wordsData.json';
 import LoadingSpinner from './LoadingSpinner';
+import Login from './Login';
 import Word from './Word';
 
-const SightWords = () => {
+const SightWords = (props) => {
+  const { user } = props;
   const { words } = sightWordsData;
   const [wordIndex, setWordIndex] = useState(0);
+
+  console.log(user)
 
   const incrementWordIndex = () => {
     setWordIndex(wordIndex + 1);
@@ -19,6 +24,8 @@ const SightWords = () => {
   const decrementWordIndex = () => {
     setWordIndex(wordIndex - 1);
   }
+
+  if (user.user.id === null || user.user.userName === null) return <Login />
 
   if (!words.length) return <LoadingSpinner />
 
@@ -37,4 +44,10 @@ const SightWords = () => {
   );
 }
 
-export default SightWords;
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(SightWords);

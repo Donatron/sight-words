@@ -19,7 +19,7 @@ const Login = () => {
       <Row className="site-content_content">
         <Col
           xs={{ size: 10, offset: 1 }}
-          md={{ size: 6, offset: 3 }}
+          lg={{ size: 6, offset: 3 }}
         >
           <Form className="site-content_content-login">
             <h3>Login</h3>
