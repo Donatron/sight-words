@@ -1,5 +1,6 @@
 import { Route, Switch } from 'react-router-dom'
 import Header from './components/Header';
+import Login from './components/Login'
 import SightWords from './components/SightWords';
 import RandomWords from './components/RandomWords'
 import UpdateWordList from './components/UpdateWordList';
@@ -17,7 +18,7 @@ function App() {
         <Route path="/phrases" component={Phrases} />
         <Route path="/update-word-list" component={UpdateWordList} />
         <Route path="/random-words" component={RandomWords} />
-        <Route path="/" component={SightWords} />
+        <Route path="/" component={Login} />
       </Switch>
     </div>
   );

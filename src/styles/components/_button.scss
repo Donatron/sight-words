@@ -7,3 +7,15 @@
     border-color: $color-primary-tint;
   }
 }
+
+.btn-secondary {
+  background-color: transparent;
+  border-color: $color-secondary;
+  color: $color-secondary;
+
+  &:hover {
+    background-color: $color-secondary;
+    color: $color-primary;
+  }
+
+}
