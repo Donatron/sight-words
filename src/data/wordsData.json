@@ -242,6 +242,153 @@
         "job"
       ],
       "complete": false
+    },
+    {
+      "id": 29,
+      "value": "fire",
+      "syllables": [
+        "fire"
+      ],
+      "complete": false
+    },
+    {
+      "id": 30,
+      "value": "station",
+      "syllables": [
+        "sta",
+        "tion"
+      ],
+      "complete": false
+    },
+    {
+      "id": 31,
+      "value": "theatre",
+      "syllables": [
+        "thea",
+        "tre"
+      ],
+      "complete": false
+    },
+    {
+      "id": 32,
+      "value": "laboratory",
+      "syllables": [
+        "lab",
+        "o",
+        "ra",
+        "to",
+        "ry"
+      ],
+      "complete": false
+    },
+    {
+      "id": 33,
+      "value": "pharmacy",
+      "syllables": [
+        "phar",
+        "ma",
+        "cy"
+      ],
+      "complete": false
+    },
+    {
+      "id": 34,
+      "value": "post",
+      "syllables": [
+        "post"
+      ],
+      "complete": false
+    },
+    {
+      "id": 35,
+      "value": "office",
+      "syllables": [
+        "off",
+        "ice"
+      ],
+      "complete": false
+    },
+    {
+      "id": 36,
+      "value": "airport",
+      "syllables": [
+        "air",
+        "port"
+      ],
+      "complete": false
+    },
+    {
+      "id": 37,
+      "value": "animal",
+      "syllables": [
+        "an",
+        "i",
+        "mal"
+      ],
+      "complete": false
+    },
+    {
+      "id": 38,
+      "value": "hospital",
+      "syllables": [
+        "hos",
+        "pi",
+        "tal"
+      ],
+      "complete": false
+    },
+    {
+      "id": 39,
+      "value": "restaurant",
+      "syllables": [
+        "res",
+        "tau",
+        "rant"
+      ],
+      "complete": false
+    },
+    {
+      "id": 40,
+      "value": "police",
+      "syllables": [
+        "po",
+        "lice"
+      ],
+      "complete": false
+    },
+    {
+      "id": 41,
+      "value": "school",
+      "syllables": [
+        "school"
+      ],
+      "complete": false
+    },
+    {
+      "id": 41,
+      "value": "dental",
+      "syllables": [
+        "den",
+        "tal"
+      ],
+      "complete": false
+    },
+    {
+      "id": 42,
+      "value": "clinic",
+      "syllables": [
+        "cli",
+        "nic"
+      ],
+      "complete": false
+    },
+    {
+      "id": 43,
+      "value": "farm",
+      "syllables": [
+        "farm"
+      ],
+      "complete": false
     }
   ]
 }
