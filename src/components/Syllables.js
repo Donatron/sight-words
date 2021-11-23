@@ -2,8 +2,10 @@ import React from 'react';
 
 const Syllables = ({ syllables }) => {
 
+  const syllablesArray = syllables.split(",");
+
   return (
-    syllables.map((syllable, i) => {
+    syllablesArray.map((syllable, i) => {
       return <p key={i}>{syllable}{i < syllables.length - 1 ? "/" : null}</p>
     })
   )

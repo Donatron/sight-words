@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button, } from 'reactstrap';
 
-const Login = () => {
+import Error from './Error';
+import { loginUser, clearError } from '../store/actions';
+
+
+const Login = (props) => {
+  const { error, clearError, loginUser } = props;
   const [emailAddress, setEmailAddress] = useState(null);
   const [userPassword, setUserPassword] = useState(null);
 
@@ -11,7 +17,8 @@ const Login = () => {
       password: userPassword
     }
 
-    console.log(user);
+    clearError();
+    loginUser(user);
   }
 
   return (
@@ -40,6 +47,9 @@ const Login = () => {
                 type="password"
                 onChange={(e) => setUserPassword(e.target.value)}
               />
+              {
+                error && <Error message={error.message} />
+              }
             </FormGroup>
             <Button color="secondary" onClick={handleSubmit}>Log In</Button>
           </Form>
@@ -49,4 +59,10 @@ const Login = () => {
   );
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    error: state.error
+  }
+}
+
+export default connect(mapStateToProps, { loginUser, clearError })(Login);

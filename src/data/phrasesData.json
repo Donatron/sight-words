@@ -65,6 +65,24 @@
       "value": "I work at the ____",
       "userId": 2,
       "complete": false
+    },
+    {
+      "id": 12,
+      "value": "What do you want to be?",
+      "userId": 2,
+      "complete": false
+    },
+    {
+      "id": 13,
+      "value": "I want to be a/an ____",
+      "userId": 2,
+      "complete": false
+    },
+    {
+      "id": 14,
+      "value": "When I grow up",
+      "userId": 2,
+      "complete": false
     }
   ]
 }

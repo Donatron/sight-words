@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Navbar, NavbarToggler, Collapse, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
-const Navigation = () => {
+import { logoutUser } from '../store/actions'
+
+const Navigation = (props) => {
   return (
     <div>
       <Navbar
@@ -82,11 +85,16 @@ const Navigation = () => {
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
+            <NavItem>
+              <Link to="/" onClick={() => props.logoutUser()}>
+                Logout
+              </Link>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>
-    </div>
+    </div >
   );
 }
 
-export default Navigation;
+export default connect(null, { logoutUser })(Navigation);
