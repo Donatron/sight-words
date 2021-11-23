@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import rootUrl from '../../config/config';
+import { setRequestHeaders } from '../../utils/utils';
 
 export const SET_LOADING = 'SET_LOADING';
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
@@ -10,6 +11,8 @@ export const SET_ERROR = 'SET_ERROR';
 export const CLEAR_ERROR = 'CLEAR_ERROR';
 export const FETCH_SIGHT_WORDS = 'FETCH_SIGHT_WORDS';
 export const CLEAR_SIGHT_WORDS = 'CLEAR_SIGHT_WORDS';
+export const FETCH_PHRASES = 'FETCH_PHRASES';
+export const CLEAR_PHRASES = 'CLEAR_PHRASES';
 export const RESET_STATE = 'RESET_STATE';
 
 export const loginUser = (user) => async (dispatch) => {
@@ -43,10 +46,7 @@ export const logoutUser = () => {
 }
 
 export const fetchUser = (email, token) => async (dispatch) => {
-  const options = {
-    "Content-type": "application/json",
-    "x-auth-token": token
-  }
+  const options = setRequestHeaders(token);
 
   try {
     const response = await axios.get(`${rootUrl}/user`, { headers: { ...options } });
@@ -56,7 +56,7 @@ export const fetchUser = (email, token) => async (dispatch) => {
     } else {
       dispatch({
         type: FETCH_USER,
-        payload: response.data
+        payload: response.data[0]
       })
     }
   } catch (err) {
@@ -65,10 +65,7 @@ export const fetchUser = (email, token) => async (dispatch) => {
 }
 
 export const fetchSightWords = (token) => async (dispatch) => {
-  const options = {
-    "Content-type": "application/json",
-    "x-auth-token": token
-  }
+  const options = setRequestHeaders(token);
 
   try {
     const response = await axios.get(`${rootUrl}/sight-words`, { headers: { ...options } });
@@ -82,6 +79,25 @@ export const fetchSightWords = (token) => async (dispatch) => {
       })
     }
 
+  } catch (err) {
+    dispatch(setError('System error. Please try again later.'));
+  }
+}
+
+export const fetchPhrases = (token) => async (dispatch) => {
+  const options = setRequestHeaders(token);
+
+  try {
+    const response = await axios.get(`${rootUrl}/phrases`, { headers: { ...options } });
+
+    if (response.data.status === 'error') {
+      dispatch(setError('Unable to load phrases. Please try again later.'))
+    } else {
+      dispatch({
+        type: FETCH_PHRASES,
+        payload: response.data.result
+      });
+    }
   } catch (err) {
     dispatch(setError('System error. Please try again later.'));
   }
