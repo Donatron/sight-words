@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux'
 import { Container, Row, Col, Button } from 'reactstrap';
 
-import sightWordsData from '../data/wordsData.json';
 import Word from './Word';
 
-const RandomWords = () => {
-  const { words } = sightWordsData;
+const RandomWords = (props) => {
+  const { words } = props;
+  const wordList = words.filter(word => !word.complete);
 
   const generateRandomWordIndex = () => {
     return Math.floor(Math.random() * (words.length - 1));
@@ -21,14 +22,20 @@ const RandomWords = () => {
     <Container className="site-content">
       <Row className="site-content_content">
         <Col xs={12} >
-          <Word word={words[wordIndex]} />
+          <Word word={wordList[wordIndex]} />
         </Col>
         <Col xs={6} className="site-content_content-buttons">
-          <Button color="primary" onClick={handleClick}>Next</Button>
+          {wordList.length > 1 && <Button color="primary" onClick={handleClick}>Next</Button>}
         </Col>
       </Row>
     </Container>
   );
 }
 
-export default RandomWords;
+const mapStateToProps = state => {
+  return {
+    words: state.words.words
+  }
+}
+
+export default connect(mapStateToProps)(RandomWords);
