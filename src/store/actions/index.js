@@ -12,6 +12,9 @@ export const CLEAR_ERROR = 'CLEAR_ERROR';
 export const FETCH_SIGHT_WORDS = 'FETCH_SIGHT_WORDS';
 export const CLEAR_SIGHT_WORDS = 'CLEAR_SIGHT_WORDS';
 export const FETCH_PHRASES = 'FETCH_PHRASES';
+export const INSERT_PHRASE = 'INSERT_PHRASE';
+export const UPDATE_PHRASE = 'UPDATE_PHRASE';
+export const DELETE_PHRASE = 'DELETE_PHRASE';
 export const CLEAR_PHRASES = 'CLEAR_PHRASES';
 export const RESET_STATE = 'RESET_STATE';
 
@@ -71,7 +74,7 @@ export const fetchSightWords = (token) => async (dispatch) => {
     const response = await axios.get(`${rootUrl}/sight-words`, { headers: { ...options } });
 
     if (response.data.status === 'error') {
-      dispatch(setError('Unable to load sight words. Please try again'));
+      dispatch(setError(response.data.message));
     } else {
       dispatch({
         type: FETCH_SIGHT_WORDS,
@@ -91,12 +94,65 @@ export const fetchPhrases = (token) => async (dispatch) => {
     const response = await axios.get(`${rootUrl}/phrases`, { headers: { ...options } });
 
     if (response.data.status === 'error') {
-      dispatch(setError('Unable to load phrases. Please try again later.'))
+      dispatch(setError(response.data.message));
     } else {
       dispatch({
         type: FETCH_PHRASES,
         payload: response.data.result
       });
+    }
+  } catch (err) {
+    dispatch(setError('System error. Please try again later.'));
+  }
+}
+
+export const insertPhrase = (phrase, token) => async (dispatch) => {
+  const options = setRequestHeaders(token);
+
+  try {
+    const response = await axios.post(`${rootUrl}/phrases-insert`, { phrase }, { headers: { ...options } });
+
+    if (response.data.status === 'error') {
+      dispatch(setError(response.data.message))
+    } else {
+      dispatch(fetchPhrases(token));
+    }
+  } catch (err) {
+    dispatch(setError('System error. Please try again later.'))
+  }
+}
+
+export const updatePhrase = (phraseId, token, params) => async (dispatch) => {
+  const options = setRequestHeaders(token);
+
+  try {
+    const response = await axios.put(`${rootUrl}/phrases-update/${phraseId}`, { ...params }, { headers: { ...options } });
+
+    if (response.data.status === 'error') {
+      dispatch(setError(response.data.message));
+    } else {
+      dispatch({
+        type: UPDATE_PHRASE
+      });
+    }
+
+  } catch (err) {
+    dispatch(setError('System error. Please try again later'));
+  }
+
+  dispatch(fetchPhrases(token));
+}
+
+export const deletePhrase = (phraseId, token) => async (dispatch) => {
+  const options = setRequestHeaders(token);
+
+  try {
+    const response = await axios.delete(`${rootUrl}/phrases-delete/${phraseId}`, { headers: { ...options } }, null);
+
+    if (response.data.status === 'error') {
+      dispatch(setError('Unable to delete phrase at the moment. Please try again later.'));
+    } else {
+      dispatch(fetchPhrases(token));
     }
   } catch (err) {
     dispatch(setError('System error. Please try again later.'));

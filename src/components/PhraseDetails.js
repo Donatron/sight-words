@@ -1,20 +1,34 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckSquare, faSquare, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-const PhraseDetails = ({ phrase }) => {
+import { deletePhrase } from '../store/actions';
+
+const PhraseDetails = (props) => {
+  const {
+    phrase,
+    token,
+    onClickEdit,
+    onClickDelete,
+    onClickComplete
+  } = props;
   const { value, complete } = phrase;
 
   const handleClickComplete = (e) => {
-    console.log('Clicking complete');
+    const params = {
+      complete: phrase.complete ? "0" : "1"
+    }
+
+    onClickComplete(phrase.id, token, params);
   }
 
-  const handleClickEdit = (e) => {
-    console.log('Clicking edit');
+  const handleClickEdit = () => {
+    onClickEdit()
   }
 
-  const handleClickDelete = (e) => {
-    console.log('Clicking delete');
+  const handleClickDelete = () => {
+    onClickDelete();
   }
 
   return (
@@ -23,7 +37,7 @@ const PhraseDetails = ({ phrase }) => {
         {value}
       </th>
       <td>
-        <FontAwesomeIcon icon={complete ? faCheckSquare : faSquare} onClick={handleClickComplete} />
+        <FontAwesomeIcon icon={complete ? faCheckSquare : faSquare} onClick={(e) => handleClickComplete(e)} />
       </td>
       <td>
         <FontAwesomeIcon icon={faEdit} onClick={handleClickEdit} />
@@ -35,4 +49,10 @@ const PhraseDetails = ({ phrase }) => {
   );
 }
 
-export default PhraseDetails;
+const mapStateToProps = state => {
+  return {
+    token: state.auth.token
+  }
+}
+
+export default connect(mapStateToProps, { deletePhrase },)(PhraseDetails);

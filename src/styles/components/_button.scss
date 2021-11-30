@@ -3,8 +3,8 @@
   border-color: $color-primary;
 
   &:hover {
-    background-color: $color-primary-tint;
-    border-color: $color-primary-tint;
+    background-color: $color-primary-shade;
+    border-color: $color-primary-shade;
   }
 }
 
@@ -15,7 +15,7 @@
 
   &:hover {
     background-color: $color-secondary;
-    color: $color-primary;
+    border-color: $color-secondary;
+    color: white;
   }
-
 }

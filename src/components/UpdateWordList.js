@@ -7,10 +7,10 @@ import WordDetails from './WordDetails';
 import { fetchPhrases, fetchSightWords } from '../store/actions';
 
 const UpdateWordList = (props) => {
-  const { words, phrases, token, fetchPhrases } = props;
+  const { words, token } = props;
+  words.sort((a, b) => a.value.toLowerCase() > b.value.toLowerCase() ? 1 : -1);
 
   useEffect(() => {
-    if (!phrases.length) fetchPhrases(token);
     if (!words.length) fetchSightWords(token);
   }, [])
 
@@ -51,7 +51,6 @@ const UpdateWordList = (props) => {
 const mapStateToProps = state => {
   return {
     words: state.words.words,
-    phrases: state.phrases.phrases,
     token: state.auth.token
   }
 }
