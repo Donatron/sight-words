@@ -2,8 +2,9 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckSquare, faSquare, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-const WordDetails = ({ word }) => {
-  const { value, complete } = word;
+const WordDetails = (props) => {
+  const { word, onClickDelete } = props;
+  const { value, syllables, complete } = word;
 
   const handleClickComplete = (e) => {
     console.log('Clicking complete');
@@ -14,7 +15,7 @@ const WordDetails = ({ word }) => {
   }
 
   const handleClickDelete = (e) => {
-    console.log('Clicking delete');
+    onClickDelete();
   }
 
   return (
@@ -22,6 +23,9 @@ const WordDetails = ({ word }) => {
       <th scope="row">
         {value}
       </th>
+      <td>
+        {syllables}
+      </td>
       <td>
         <FontAwesomeIcon icon={complete ? faCheckSquare : faSquare} onClick={handleClickComplete} />
       </td>

@@ -10,6 +10,8 @@ export const FETCH_USER = 'FETCH_USER';
 export const SET_ERROR = 'SET_ERROR';
 export const CLEAR_ERROR = 'CLEAR_ERROR';
 export const FETCH_SIGHT_WORDS = 'FETCH_SIGHT_WORDS';
+export const INSERT_SIGHT_WORD = 'INSERT_SIGHT_WORD';
+export const DELETE_SIGHT_WORD = 'DELETE_SIGHT_WORD';
 export const CLEAR_SIGHT_WORDS = 'CLEAR_SIGHT_WORDS';
 export const FETCH_PHRASES = 'FETCH_PHRASES';
 export const INSERT_PHRASE = 'INSERT_PHRASE';
@@ -85,6 +87,39 @@ export const fetchSightWords = (token) => async (dispatch) => {
   } catch (err) {
     dispatch(setError('System error. Please try again later.'));
   }
+}
+
+export const insertSightWord = (wordData, token) => async (dispatch) => {
+  const options = setRequestHeaders(token);
+
+  try {
+    const response = await axios.post(`${rootUrl}/sight-words-insert`, { word: wordData.word, syllables: wordData.syllables }, { headers: { ...options } });
+
+    if (response.data.status === 'error') {
+      dispatch(setError(response.data.message));
+    } else {
+      dispatch(fetchSightWords(token));
+    }
+  } catch (err) {
+    dispatch(setError('System error. Please try again later.'));
+  }
+}
+
+export const deleteSightWord = (wordId, token) => async (dispatch) => {
+  const options = setRequestHeaders(token);
+
+  try {
+    const response = await axios.delete(`${rootUrl}/sight-words-delete/${wordId}`, { headers: { ...options } }, null);
+
+    if (response.data.status === 'error') {
+      dispatch(setError(response.data.message));
+    } else {
+      dispatch(fetchSightWords(token));
+    }
+  } catch (err) {
+    dispatch(setError('System error. Please try again later'));
+  }
+
 }
 
 export const fetchPhrases = (token) => async (dispatch) => {

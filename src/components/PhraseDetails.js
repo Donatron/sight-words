@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckSquare, faSquare, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-import { deletePhrase } from '../store/actions';
-
 const PhraseDetails = (props) => {
   const {
     phrase,
@@ -55,4 +53,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { deletePhrase },)(PhraseDetails);
+export default connect(mapStateToProps)(PhraseDetails);

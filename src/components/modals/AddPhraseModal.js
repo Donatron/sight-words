@@ -22,6 +22,7 @@ const AddPhraseModal = (props) => {
     }, 200)
   }
 
+  // TODO: MAKE SURE EMPTY PHRASE CANNOT BE SUBMITTED
   const handleAddPhraseSumbit = () => {
     insertPhrase(phrase, token);
     toggleModal();
