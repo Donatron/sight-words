@@ -1,13 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckSquare, faSquare, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 const WordDetails = (props) => {
-  const { word, onClickDelete } = props;
+  const { word, onClickDelete, onClickComplete, token } = props;
   const { value, syllables, complete } = word;
 
   const handleClickComplete = (e) => {
-    console.log('Clicking complete');
+    const params = {
+      complete: word.complete ? "0" : "1"
+    }
+
+    onClickComplete(word.id, token, params);
   }
 
   const handleClickEdit = (e) => {
@@ -39,4 +44,10 @@ const WordDetails = (props) => {
   );
 }
 
-export default WordDetails;
+const mapStateToProps = state => {
+  return {
+    token: state.auth.token
+  }
+}
+
+export default connect(mapStateToProps)(WordDetails);

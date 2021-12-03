@@ -8,10 +8,16 @@ import WordDetails from './WordDetails';
 import AddWordModal from './modals/AddWordModal'
 import DeleteConfirmModal from './modals/DeleteConfirmModal'
 
-import { fetchSightWords, deleteSightWord } from '../store/actions';
+import { fetchSightWords, updateSightWord, deleteSightWord } from '../store/actions';
 
 const UpdateWordList = (props) => {
-  const { words, token, fetchSightWords, deleteSightWord } = props;
+  const {
+    words,
+    token,
+    fetchSightWords,
+    updateSightWord,
+    deleteSightWord
+  } = props;
   words.sort((a, b) => a.value.toLowerCase() > b.value.toLowerCase() ? 1 : -1);
 
   const [showAddWordModal, setShowAddWordModal] = useState(false);
@@ -38,6 +44,10 @@ const UpdateWordList = (props) => {
 
   const handleClickAddWord = () => {
     toggleAddWordModal();
+  }
+
+  const handleClickComplete = (wordId, token, params) => {
+    updateSightWord(wordId, token, params)
   }
 
   return (
@@ -81,7 +91,15 @@ const UpdateWordList = (props) => {
               </tr>
             </thead>
             <tbody>
-              {words.map(word => <WordDetails word={word} key={word.id} onClickDelete={() => toggleConfirmDeleteModal(word.id)} />)}
+              {words.map(word => (
+                <WordDetails
+                  word={word}
+                  key={word.id}
+                  onClickDelete={() => toggleConfirmDeleteModal(word.id)}
+                  onClickComplete={handleClickComplete}
+                />
+              )
+              )}
             </tbody>
           </Table>
         </Col>
@@ -97,4 +115,11 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchSightWords, deleteSightWord })(UpdateWordList);
+export default connect(
+  mapStateToProps,
+  {
+    fetchSightWords,
+    updateSightWord,
+    deleteSightWord
+  }
+)(UpdateWordList);

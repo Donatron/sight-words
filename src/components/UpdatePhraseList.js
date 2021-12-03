@@ -133,4 +133,11 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchPhrases, updatePhrase, deletePhrase })(UpdatePhraseList);
+export default connect(
+  mapStateToProps,
+  {
+    fetchPhrases,
+    updatePhrase,
+    deletePhrase
+  }
+)(UpdatePhraseList);
