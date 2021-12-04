@@ -27,6 +27,10 @@ export const loginUser = (user) => async (dispatch) => {
     password: user.password
   }
 
+  dispatch({
+    type: SET_LOADING
+  });
+
   try {
     const response = await axios.post(`${rootUrl}/login`, loginData);
 
@@ -43,6 +47,10 @@ export const loginUser = (user) => async (dispatch) => {
   } catch (err) {
     dispatch(setError('System error. Please try again later.'));
   }
+
+  dispatch({
+    type: SET_LOADING
+  });
 }
 
 export const logoutUser = () => {
@@ -53,6 +61,10 @@ export const logoutUser = () => {
 
 export const fetchUser = (email, token) => async (dispatch) => {
   const options = setRequestHeaders(token);
+
+  dispatch({
+    type: SET_LOADING
+  });
 
   try {
     const response = await axios.get(`${rootUrl}/user`, { headers: { ...options } });
@@ -68,10 +80,18 @@ export const fetchUser = (email, token) => async (dispatch) => {
   } catch (err) {
     dispatch(setError('System error. Please try again later.'));
   }
+
+  dispatch({
+    type: SET_LOADING
+  });
 }
 
 export const fetchSightWords = (token) => async (dispatch) => {
   const options = setRequestHeaders(token);
+
+  dispatch({
+    type: SET_LOADING
+  });
 
   try {
     const response = await axios.get(`${rootUrl}/sight-words`, { headers: { ...options } });
@@ -88,10 +108,18 @@ export const fetchSightWords = (token) => async (dispatch) => {
   } catch (err) {
     dispatch(setError('System error. Please try again later.'));
   }
+
+  dispatch({
+    type: SET_LOADING
+  });
 }
 
 export const insertSightWord = (wordData, token) => async (dispatch) => {
   const options = setRequestHeaders(token);
+
+  dispatch({
+    type: SET_LOADING
+  });
 
   try {
     const response = await axios.post(`${rootUrl}/sight-words-insert`, { word: wordData.word, syllables: wordData.syllables }, { headers: { ...options } });
@@ -104,10 +132,18 @@ export const insertSightWord = (wordData, token) => async (dispatch) => {
   } catch (err) {
     dispatch(setError('System error. Please try again later.'));
   }
+
+  dispatch({
+    type: SET_LOADING
+  });
 }
 
 export const updateSightWord = (wordId, token, params) => async (dispatch) => {
   const options = setRequestHeaders(token);
+
+  dispatch({
+    type: SET_LOADING
+  });
 
   try {
     const response = await axios.put(`${rootUrl}/sight-words-update/${wordId}`, { ...params }, { headers: { ...options } });
@@ -120,15 +156,22 @@ export const updateSightWord = (wordId, token, params) => async (dispatch) => {
       });
     }
 
+    dispatch(fetchSightWords(token));
   } catch (err) {
     dispatch(setError('System error. Please try again later'));
   }
 
-  dispatch(fetchSightWords(token));
+  dispatch({
+    type: SET_LOADING
+  });
 }
 
 export const deleteSightWord = (wordId, token) => async (dispatch) => {
   const options = setRequestHeaders(token);
+
+  dispatch({
+    type: SET_LOADING
+  });
 
   try {
     const response = await axios.delete(`${rootUrl}/sight-words-delete/${wordId}`, { headers: { ...options } }, null);
@@ -142,10 +185,18 @@ export const deleteSightWord = (wordId, token) => async (dispatch) => {
     dispatch(setError('System error. Please try again later'));
   }
 
+  dispatch({
+    type: SET_LOADING
+  });
+
 }
 
 export const fetchPhrases = (token) => async (dispatch) => {
   const options = setRequestHeaders(token);
+
+  dispatch({
+    type: SET_LOADING
+  });
 
   try {
     const response = await axios.get(`${rootUrl}/phrases`, { headers: { ...options } });
@@ -161,10 +212,18 @@ export const fetchPhrases = (token) => async (dispatch) => {
   } catch (err) {
     dispatch(setError('System error. Please try again later.'));
   }
+
+  dispatch({
+    type: SET_LOADING
+  });
 }
 
 export const insertPhrase = (phrase, token) => async (dispatch) => {
   const options = setRequestHeaders(token);
+
+  dispatch({
+    type: SET_LOADING
+  });
 
   try {
     const response = await axios.post(`${rootUrl}/phrases-insert`, { phrase }, { headers: { ...options } });
@@ -177,10 +236,18 @@ export const insertPhrase = (phrase, token) => async (dispatch) => {
   } catch (err) {
     dispatch(setError('System error. Please try again later.'))
   }
+
+  dispatch({
+    type: SET_LOADING
+  });
 }
 
 export const updatePhrase = (phraseId, token, params) => async (dispatch) => {
   const options = setRequestHeaders(token);
+
+  dispatch({
+    type: SET_LOADING
+  });
 
   try {
     const response = await axios.put(`${rootUrl}/phrases-update/${phraseId}`, { ...params }, { headers: { ...options } });
@@ -193,15 +260,22 @@ export const updatePhrase = (phraseId, token, params) => async (dispatch) => {
       });
     }
 
+    dispatch(fetchPhrases(token));
   } catch (err) {
     dispatch(setError('System error. Please try again later'));
   }
 
-  dispatch(fetchPhrases(token));
+  dispatch({
+    type: SET_LOADING
+  });
 }
 
 export const deletePhrase = (phraseId, token) => async (dispatch) => {
   const options = setRequestHeaders(token);
+
+  dispatch({
+    type: SET_LOADING
+  });
 
   try {
     const response = await axios.delete(`${rootUrl}/phrases-delete/${phraseId}`, { headers: { ...options } }, null);
@@ -214,6 +288,10 @@ export const deletePhrase = (phraseId, token) => async (dispatch) => {
   } catch (err) {
     dispatch(setError('System error. Please try again later.'));
   }
+
+  dispatch({
+    type: SET_LOADING
+  });
 }
 
 export const setError = (message) => {

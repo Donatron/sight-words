@@ -31,7 +31,7 @@ const UpdatePhraseList = (props) => {
 
   useEffect(() => {
     if (!phrases.length) fetchPhrases(token);
-  }, [])
+  });
 
   const handleClickAddPhrase = () => {
     setShowAddPhraseModal(!showAddPhraseModal);

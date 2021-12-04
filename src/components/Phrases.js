@@ -4,7 +4,6 @@ import { Container, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleRight, faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
-import LoadingSpinner from './LoadingSpinner';
 import Login from './Login';
 import Phrase from './Phrase';
 
@@ -18,7 +17,7 @@ const Phrases = (props) => {
   useEffect(() => {
     if (!auth.token) return;
     fetchPhrases(auth.token);
-  }, [auth.token])
+  });
 
   const incrementPhraseIndex = () => {
     setPhraseIndex(phraseIndex + 1);

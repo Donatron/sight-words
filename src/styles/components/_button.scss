@@ -1,6 +1,8 @@
 .btn-primary {
-  background-color: $color-primary;
+  background-color: transparent;
   border-color: $color-primary;
+  color: $color-primary;
+  min-width: 120px;
 
   &:hover {
     background-color: $color-primary-shade;
@@ -12,6 +14,7 @@
   background-color: transparent;
   border-color: $color-secondary;
   color: $color-secondary;
+  min-width: 120px;
 
   &:hover {
     background-color: $color-secondary;
