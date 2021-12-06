@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button, } from 'reactstrap';
 
@@ -30,6 +31,7 @@ const Login = (props) => {
         >
           <Form className="site-content_content-login">
             <h3>Login</h3>
+            <p>Don't have an account?{' '}<Link to="/register">Register here</Link></p>
             <FormGroup className="site-content_content-login-form">
               <Label for="email">Email</Label>
               <Input

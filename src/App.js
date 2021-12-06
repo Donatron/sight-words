@@ -9,6 +9,7 @@ import Phrases from './components/Phrases'
 import RandomPhrases from './components/RandomPhrases'
 import UpdatePhraseList from './components/UpdatePhraseList';
 import LoadingSpinner from './components/LoadingSpinner';
+import Register from './components/Register';
 
 function App(props) {
   const { loading } = props;
@@ -22,6 +23,7 @@ function App(props) {
         <Route path="/phrases" component={Phrases} />
         <Route path="/update-word-list" component={UpdateWordList} />
         <Route path="/random-words" component={RandomWords} />
+        <Route path="/register" component={Register} />
         <Route path="/" component={SightWords} />
       </Switch>
     </div>

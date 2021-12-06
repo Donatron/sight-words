@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 import rootUrl from '../../config/config';
 import { setRequestHeaders } from '../../utils/utils';
@@ -21,6 +22,14 @@ export const DELETE_PHRASE = 'DELETE_PHRASE';
 export const CLEAR_PHRASES = 'CLEAR_PHRASES';
 export const RESET_STATE = 'RESET_STATE';
 
+const history = useHistory();
+let serverError = 'System error. Please try again later.';
+
+const setServerError = (err) => {
+  if (err.response && err.response.data.message) serverError = err.response.data.message;
+  return serverError
+}
+
 export const loginUser = (user) => async (dispatch) => {
   const loginData = {
     email: user.email,
@@ -42,10 +51,39 @@ export const loginUser = (user) => async (dispatch) => {
         type: SET_AUTH_TOKEN,
         payload: response.data.token
       });
+
+      history.push('/');
     }
 
   } catch (err) {
-    dispatch(setError('System error. Please try again later.'));
+    dispatch(setError(setServerError(err)));
+  }
+
+  dispatch({
+    type: SET_LOADING
+  });
+}
+
+export const registerUser = (userData) => async (dispatch) => {
+  dispatch({
+    type: SET_LOADING
+  });
+
+  try {
+    const response = await axios.post(`${rootUrl}/register`, userData);
+
+    if (response.data.status === 'error') {
+      dispatch(setError(response.data.message));
+    } else {
+      // TODO do something here...
+      const user = {
+        email: userData.email,
+        password: userData.password
+      }
+      dispatch(loginUser(user));
+    }
+  } catch (err) {
+    dispatch(setError(setServerError(err)));
   }
 
   dispatch({
@@ -78,7 +116,7 @@ export const fetchUser = (email, token) => async (dispatch) => {
       })
     }
   } catch (err) {
-    dispatch(setError('System error. Please try again later.'));
+    dispatch(setError(setServerError(err)));
   }
 
   dispatch({
@@ -106,7 +144,7 @@ export const fetchSightWords = (token) => async (dispatch) => {
     }
 
   } catch (err) {
-    dispatch(setError('System error. Please try again later.'));
+    dispatch(setError(setServerError(err)));
   }
 
   dispatch({
@@ -130,7 +168,7 @@ export const insertSightWord = (wordData, token) => async (dispatch) => {
       dispatch(fetchSightWords(token));
     }
   } catch (err) {
-    dispatch(setError('System error. Please try again later.'));
+    dispatch(setError(setServerError(err)));
   }
 
   dispatch({
@@ -158,7 +196,7 @@ export const updateSightWord = (wordId, token, params) => async (dispatch) => {
 
     dispatch(fetchSightWords(token));
   } catch (err) {
-    dispatch(setError('System error. Please try again later'));
+    dispatch(setError(setServerError(err)));
   }
 
   dispatch({
@@ -182,7 +220,7 @@ export const deleteSightWord = (wordId, token) => async (dispatch) => {
       dispatch(fetchSightWords(token));
     }
   } catch (err) {
-    dispatch(setError('System error. Please try again later'));
+    dispatch(setError(setServerError(err)));
   }
 
   dispatch({
@@ -210,7 +248,7 @@ export const fetchPhrases = (token) => async (dispatch) => {
       });
     }
   } catch (err) {
-    dispatch(setError('System error. Please try again later.'));
+    dispatch(setError(setServerError(err)));
   }
 
   dispatch({
@@ -234,7 +272,7 @@ export const insertPhrase = (phrase, token) => async (dispatch) => {
       dispatch(fetchPhrases(token));
     }
   } catch (err) {
-    dispatch(setError('System error. Please try again later.'))
+    dispatch(setError(setServerError(err)));
   }
 
   dispatch({
@@ -262,7 +300,7 @@ export const updatePhrase = (phraseId, token, params) => async (dispatch) => {
 
     dispatch(fetchPhrases(token));
   } catch (err) {
-    dispatch(setError('System error. Please try again later'));
+    dispatch(setError(setServerError(err)));
   }
 
   dispatch({
@@ -286,7 +324,7 @@ export const deletePhrase = (phraseId, token) => async (dispatch) => {
       dispatch(fetchPhrases(token));
     }
   } catch (err) {
-    dispatch(setError('System error. Please try again later.'));
+    dispatch(setError(setServerError(err)));
   }
 
   dispatch({
