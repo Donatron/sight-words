@@ -15,6 +15,24 @@
     flex-direction: column;
     justify-content: space-around;
     padding: 60px 0;
+
+    &-login {
+      a {
+        @include transition;
+
+        color: $color-secondary;
+        text-decoration: none;
+
+        &:hover {
+          color: $color-secondary-tint;
+        }
+      }
+      
+
+      span {
+        font-size: 0.75em;
+      }
+    }
   }
 
   &_phrase-list {

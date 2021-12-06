@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button, } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 import Error from './Error';
 import { registerUser, clearError } from '../store/actions';
 
 
 const Register = (props) => {
-  const { error, clearError, registerUser } = props;
-  const [emailAddress, setEmailAddress] = useState(null);
-  const [userPassword, setUserPassword] = useState(null);
+  const { error, registerUser } = props;
 
   const [formData, setFormData] = useState({
     email: null,
@@ -26,14 +27,6 @@ const Register = (props) => {
   }
 
   const handleSubmit = () => {
-    // const user = {
-    //   email: emailAddress,
-    //   password: userPassword
-    // }
-
-    // clearError();
-    // loginUser(user);
-
     registerUser(formData);
   }
 
@@ -46,6 +39,11 @@ const Register = (props) => {
         >
           <Form className="site-content_content-login">
             <h3>Register</h3>
+            <span>Already Registered?{' '}
+              <Link to="/login">Login here {' '}
+                {' '} <FontAwesomeIcon icon={faArrowRight} />
+              </Link>
+            </span>
             <FormGroup className="site-content_content-login-form">
               <Label for="email">Email</Label>
               <Input

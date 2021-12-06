@@ -4,7 +4,6 @@ import { Container, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleRight, faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
-import Login from './Login';
 import Word from './Word';
 
 import { fetchSightWords } from '../store/actions'
@@ -26,8 +25,6 @@ const SightWords = (props) => {
   const decrementWordIndex = () => {
     setWordIndex(wordIndex - 1);
   }
-
-  if (user.user.id === null || user.user.userName === null) return <Login />
 
   if (!wordList.length) return <h3>You don't have any words yet...</h3>
 

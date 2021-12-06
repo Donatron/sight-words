@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
 
 import rootUrl from '../../config/config';
 import { setRequestHeaders } from '../../utils/utils';
@@ -22,7 +21,6 @@ export const DELETE_PHRASE = 'DELETE_PHRASE';
 export const CLEAR_PHRASES = 'CLEAR_PHRASES';
 export const RESET_STATE = 'RESET_STATE';
 
-const history = useHistory();
 let serverError = 'System error. Please try again later.';
 
 const setServerError = (err) => {
@@ -51,8 +49,6 @@ export const loginUser = (user) => async (dispatch) => {
         type: SET_AUTH_TOKEN,
         payload: response.data.token
       });
-
-      history.push('/');
     }
 
   } catch (err) {

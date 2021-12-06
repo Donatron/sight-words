@@ -4,7 +4,6 @@ import { Container, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleRight, faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
-import Login from './Login';
 import Phrase from './Phrase';
 
 import { fetchPhrases } from '../store/actions'
@@ -26,8 +25,6 @@ const Phrases = (props) => {
   const decrementPhraseIndex = () => {
     setPhraseIndex(phraseIndex - 1);
   }
-
-  if (user.user.id === null || user.user.userName === null) return <Login />
 
   if (!phraseList.length) return <h3>You don't have any phrases yet...</h3>
 
