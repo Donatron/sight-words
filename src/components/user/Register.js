@@ -5,8 +5,8 @@ import { Container, Row, Col, Form, FormGroup, Label, Input, Button, } from 'rea
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
-import AlertBox from './AlertBox';
-import { registerUser, clearError } from '../store/actions';
+import AlertBox from '../utils/AlertBox';
+import { registerUser, clearError } from '../../store/actions';
 
 
 const Register = (props) => {

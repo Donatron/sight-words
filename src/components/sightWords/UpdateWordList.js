@@ -5,10 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
 import WordDetails from './WordDetails';
-import AddWordModal from './modals/AddWordModal'
-import DeleteConfirmModal from './modals/DeleteConfirmModal'
+import AddWordModal from '../modals/AddWordModal'
+import DeleteConfirmModal from '../modals/DeleteConfirmModal'
 
-import { fetchSightWords, updateSightWord, deleteSightWord } from '../store/actions';
+import { fetchSightWords, updateSightWord, deleteSightWord } from '../../store/actions';
 
 const UpdateWordList = (props) => {
   const {
@@ -19,7 +19,7 @@ const UpdateWordList = (props) => {
     updateSightWord,
     deleteSightWord
   } = props;
-  words.sort((a, b) => a.value.toLowerCase() > b.value.toLowerCase() ? 1 : -1);
+  words.sort((a, b) => a.word.toLowerCase() > b.word.toLowerCase() ? 1 : -1);
 
   const [showAddWordModal, setShowAddWordModal] = useState(false);
   const [showConfirmDeleteModal, setShowConfirmDeleteModal] = useState(false);
@@ -83,9 +83,9 @@ const UpdateWordList = (props) => {
                 <th>
                   Complete
                 </th>
-                <th>
+                {/* <th>
                   Edit
-                </th>
+                </th> */}
                 <th>
                   Delete
                 </th>
@@ -94,7 +94,7 @@ const UpdateWordList = (props) => {
             <tbody>
               {words.map(word => (
                 <WordDetails
-                  word={word}
+                  wordObject={word}
                   key={word.id}
                   onClickDelete={() => toggleConfirmDeleteModal(word.id)}
                   onClickComplete={handleClickComplete}

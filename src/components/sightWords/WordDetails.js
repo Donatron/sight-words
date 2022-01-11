@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckSquare, faSquare, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 const WordDetails = (props) => {
-  const { word, onClickDelete, onClickComplete, token } = props;
-  const { value, syllables, complete } = word;
+  const { wordObject, onClickDelete, onClickComplete, token } = props;
+  const { word, syllables, complete } = wordObject;
 
   const handleClickComplete = (e) => {
     const params = {
@@ -26,7 +26,7 @@ const WordDetails = (props) => {
   return (
     <tr>
       <th scope="row">
-        {value}
+        {word}
       </th>
       <td>
         {syllables}
@@ -34,9 +34,9 @@ const WordDetails = (props) => {
       <td>
         <FontAwesomeIcon icon={complete ? faCheckSquare : faSquare} onClick={handleClickComplete} />
       </td>
-      <td>
+      {/* <td>
         <FontAwesomeIcon icon={faEdit} onClick={handleClickEdit} />
-      </td>
+      </td> */}
       <td>
         <FontAwesomeIcon icon={faTrashAlt} onClick={handleClickDelete} />
       </td>

@@ -5,11 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
 import PhraseDetails from './PhraseDetails';
-import AddPhraseModal from './modals/AddPhraseModal';
-import EditPhraseModal from './modals/EditPhraseModal';
-import DeleteConfirmModal from './modals/DeleteConfirmModal';
+import AddPhraseModal from '../modals/AddPhraseModal';
+import EditPhraseModal from '../modals/EditPhraseModal';
+import DeleteConfirmModal from '../modals/DeleteConfirmModal';
 
-import { fetchPhrases, updatePhrase, deletePhrase } from '../store/actions';
+import { fetchPhrases, updatePhrase, deletePhrase } from '../../store/actions';
 
 const UpdatePhraseList = (props) => {
   const {
@@ -21,7 +21,7 @@ const UpdatePhraseList = (props) => {
     deletePhrase
   } = props;
 
-  phrases.sort((a, b) => a.value.toLowerCase() > b.value.toLowerCase() ? 1 : -1);
+  phrases.sort((a, b) => a.phrase.toLowerCase() > b.phrase.toLowerCase() ? 1 : -1);
 
   const [showAddPhraseModal, setShowAddPhraseModal] = useState(false);
   const [showEditPhraseModal, setShowEditPhraseModal] = useState(false);
@@ -101,9 +101,9 @@ const UpdatePhraseList = (props) => {
                 <th>
                   Complete
                 </th>
-                <th>
+                {/* <th>
                   Edit
-                </th>
+                </th> */}
                 <th>
                   Delete
                 </th>
@@ -112,7 +112,7 @@ const UpdatePhraseList = (props) => {
             <tbody>
               {phrases.map(phrase => {
                 return <PhraseDetails
-                  phrase={phrase}
+                  selectedPhrase={phrase}
                   key={phrase.id}
                   onClickEdit={() => toggleEditPhraseModal(phrase.id)}
                   onClickDelete={() => toggleConfirmDeleteModal(phrase.id)}

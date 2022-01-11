@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Alert } from 'reactstrap';
 
-import { clearAlert } from '../store/actions';
+import { clearAlert } from '../../store/actions';
 
 const AlertBox = (props) => {
   const { style, message, clearAlert } = props;

@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleRight, faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
 import Word from './Word';
-import NoItems from './NoItems';
+import NoItems from '../utils/NoItems';
 
-import { fetchSightWords } from '../store/actions'
+import { fetchSightWords } from '../../store/actions'
 
 const SightWords = (props) => {
   const { auth, fetchSightWords, words } = props;

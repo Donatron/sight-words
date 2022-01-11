@@ -5,8 +5,8 @@ import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reac
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
-import AlertBox from './AlertBox';
-import { loginUser, clearError } from '../store/actions';
+import AlertBox from '../utils/AlertBox';
+import { loginUser, clearError } from '../../store/actions';
 
 const Login = (props) => {
   const { alert, clearError, loginUser } = props;

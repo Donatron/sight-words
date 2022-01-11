@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Container, Row, Col, Button } from 'reactstrap';
 
 import Word from './Word';
-import NoItems from './NoItems';
+import NoItems from '../utils/NoItems';
 
 const RandomWords = (props) => {
   const { words } = props;

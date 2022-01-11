@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Container, Row, Col, Button } from 'reactstrap';
 
 import Phrase from './Phrase';
-import NoItems from './NoItems';
+import NoItems from '../utils/NoItems';
 
 const RandomPhrases = (props) => {
   const { phrases } = props;
@@ -25,7 +25,7 @@ const RandomPhrases = (props) => {
     <Container className="site-content">
       <Row className="site-content_content">
         <Col xs={12} >
-          <Phrase phrase={phraseList[phraseIndex]} />
+          <Phrase selectedPhrase={phraseList[phraseIndex]} />
         </Col>
         <Col xs={6} className="site-content_content-buttons">
           {phraseList.length > 1 && <Button color="primary" onClick={handleClick}>Next</Button>}

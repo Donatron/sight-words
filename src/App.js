@@ -1,16 +1,16 @@
 import { Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
-import Header from './components/Header';
-import Login from './components/Login';
-import SightWords from './components/SightWords';
-import RandomWords from './components/RandomWords'
-import UpdateWordList from './components/UpdateWordList';
-import Phrases from './components/Phrases'
-import RandomPhrases from './components/RandomPhrases'
-import UpdatePhraseList from './components/UpdatePhraseList';
-import LoadingSpinner from './components/LoadingSpinner';
-import Register from './components/Register';
-import NotFound from './components/NotFound';
+import Header from './components/layout/Header';
+import Login from './components/user/Login';
+import SightWords from './components/sightWords/SightWords';
+import RandomWords from './components/sightWords/RandomWords'
+import UpdateWordList from './components/sightWords/UpdateWordList';
+import Phrases from './components/phrases/Phrases'
+import RandomPhrases from './components/phrases/RandomPhrases'
+import UpdatePhraseList from './components/phrases/UpdatePhraseList';
+import LoadingSpinner from './components/utils/LoadingSpinner';
+import Register from './components/user/Register';
+import NotFound from './components/utils/NotFound';
 
 function App(props) {
   const { loading, token } = props;

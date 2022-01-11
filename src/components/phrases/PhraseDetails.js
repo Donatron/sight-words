@@ -5,20 +5,20 @@ import { faCheckSquare, faSquare, faEdit, faTrashAlt } from '@fortawesome/free-s
 
 const PhraseDetails = (props) => {
   const {
-    phrase,
+    selectedPhrase,
     token,
     onClickEdit,
     onClickDelete,
     onClickComplete
   } = props;
-  const { value, complete } = phrase;
+  const { phrase, complete } = selectedPhrase;
 
   const handleClickComplete = (e) => {
     const params = {
-      complete: phrase.complete ? "0" : "1"
+      complete: selectedPhrase.complete ? "0" : "1"
     }
 
-    onClickComplete(phrase.id, token, params);
+    onClickComplete(selectedPhrase.id, token, params);
   }
 
   const handleClickEdit = () => {
@@ -32,14 +32,14 @@ const PhraseDetails = (props) => {
   return (
     <tr>
       <th scope="row">
-        {value}
+        {phrase}
       </th>
       <td>
         <FontAwesomeIcon icon={complete ? faCheckSquare : faSquare} onClick={(e) => handleClickComplete(e)} />
       </td>
-      <td>
+      {/* <td>
         <FontAwesomeIcon icon={faEdit} onClick={handleClickEdit} />
-      </td>
+      </td> */}
       <td>
         <FontAwesomeIcon icon={faTrashAlt} onClick={handleClickDelete} />
       </td>

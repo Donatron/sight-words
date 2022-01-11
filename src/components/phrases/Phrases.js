@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleRight, faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
 import Phrase from './Phrase';
-import NoItems from './NoItems';
+import NoItems from '../utils/NoItems';
 
-import { fetchPhrases } from '../store/actions'
+import { fetchPhrases } from '../../store/actions'
 
 const Phrases = (props) => {
   const { phrases, auth, fetchPhrases } = props;
@@ -33,7 +33,7 @@ const Phrases = (props) => {
     <Container className="site-content">
       <Row className="site-content_content">
         <Col xs={12} >
-          <Phrase phrase={phrases[phraseIndex]} />
+          <Phrase selectedPhrase={phrases[phraseIndex]} />
         </Col>
         <Col xs={6} className="site-content_content-buttons">
           {phraseIndex > 0 ? phraseIndex < phraseList.length ? <FontAwesomeIcon icon={faArrowAltCircleLeft} onClick={decrementPhraseIndex} className="site-content_content-buttons-left" /> : null : null}
