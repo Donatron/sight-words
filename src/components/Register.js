@@ -5,14 +5,15 @@ import { Container, Row, Col, Form, FormGroup, Label, Input, Button, } from 'rea
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
-import Error from './Error';
+import AlertBox from './AlertBox';
 import { registerUser, clearError } from '../store/actions';
 
 
 const Register = (props) => {
-  const { error, registerUser } = props;
+  const { alert, registerUser } = props;
 
   const [formData, setFormData] = useState({
+    name: null,
     email: null,
     userName: null,
     password: null,
@@ -33,6 +34,11 @@ const Register = (props) => {
   return (
     <Container className="site-content">
       <Row className="site-content_content">
+        {
+          alert.showAlert && alert.location === 'register'
+            ? <AlertBox style={alert.alertType} message={alert.message} />
+            : null
+        }
         <Col
           xs={{ size: 10, offset: 1 }}
           lg={{ size: 6, offset: 3 }}
@@ -45,6 +51,14 @@ const Register = (props) => {
               </Link>
             </span>
             <FormGroup className="site-content_content-login-form">
+              <Label for="name">Name</Label>
+              <Input
+                id="name"
+                name="name"
+                placeholder="Name"
+                type="email"
+                onChange={(e) => handleChange(e)}
+              />
               <Label for="email">Email</Label>
               <Input
                 id="email"
@@ -77,9 +91,6 @@ const Register = (props) => {
                 type="password"
                 onChange={(e) => handleChange(e)}
               />
-              {
-                error && <Error message={error.message} />
-              }
             </FormGroup>
             <Button color="secondary" onClick={handleSubmit}>Register</Button>
           </Form>
@@ -91,7 +102,7 @@ const Register = (props) => {
 
 const mapStateToProps = state => {
   return {
-    error: state.error
+    alert: state.alert
   }
 }
 

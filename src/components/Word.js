@@ -2,12 +2,12 @@ import React from 'react';
 
 import Syllables from './Syllables';
 
-const Word = ({ word }) => {
-  const { value, syllables } = word;
+const Word = ({ selectedWord }) => {
+  const { word, syllables } = selectedWord;
 
   return (
     <div className="">
-      <h3>{value}</h3>
+      <h3>{word}</h3>
       <Syllables syllables={syllables} />
     </div>
   );

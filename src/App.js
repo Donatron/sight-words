@@ -10,38 +10,41 @@ import RandomPhrases from './components/RandomPhrases'
 import UpdatePhraseList from './components/UpdatePhraseList';
 import LoadingSpinner from './components/LoadingSpinner';
 import Register from './components/Register';
+import NotFound from './components/NotFound';
 
 function App(props) {
   const { loading, token } = props;
+
   return (
     <div className="App">
       <Header />
       {loading && <LoadingSpinner />}
       <Switch>
-        <Route path="/update-phrase-list">
+        <Route exact path="/update-phrase-list">
           {token ? <UpdatePhraseList /> : <Redirect to="/" />}
         </Route>
-        <Route path="/random-phrases">
+        <Route exact path="/random-phrases">
           {token ? <RandomPhrases /> : <Redirect to="/" />}
         </Route>
-        <Route path="/phrases">
+        <Route exact path="/phrases">
           {token ? <Phrases /> : <Redirect to="/" />}
         </Route>
-        <Route path="/update-word-list">
+        <Route exact path="/update-word-list">
           {token ? <UpdateWordList /> : <Redirect to="/" />}
         </Route>
-        <Route path="/random-words">
+        <Route exact path="/random-words">
           {token ? <RandomWords /> : <Redirect to="/" />}
         </Route>
-        <Route path="/register">
+        <Route exact path="/register">
           {token ? <Redirect to="/" /> : <Register />}
         </Route>
-        <Route path="/login">
+        <Route exact path="/login">
           {token ? <Redirect to="/" /> : <Login />}
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           {token ? <SightWords /> : <Redirect to="/login" />}
         </Route>
+        <Route exact component={NotFound} />
       </Switch>
     </div>
   );

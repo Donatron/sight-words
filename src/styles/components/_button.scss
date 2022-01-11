@@ -7,6 +7,15 @@
   &:hover {
     background-color: $color-primary-shade;
     border-color: $color-primary-shade;
+
+  a {
+    color: white;
+  }
+  }
+
+  a {
+    color: $color-primary;
+    text-decoration: none;
   }
 }
 
@@ -21,4 +30,17 @@
     border-color: $color-secondary;
     color: white;
   }
+
+  a {
+    color: $color-secondary;
+    text-decoration: none;
+
+    &:hover {
+      color:  white;
+    }
+  }
 }
+
+  .btn-no-items {
+    margin-top: 60px;
+  }

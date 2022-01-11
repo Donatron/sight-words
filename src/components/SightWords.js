@@ -5,11 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleRight, faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
 import Word from './Word';
+import NoItems from './NoItems';
 
 import { fetchSightWords } from '../store/actions'
 
 const SightWords = (props) => {
-  const { user, auth, fetchSightWords, words } = props;
+  const { auth, fetchSightWords, words } = props;
   const [wordIndex, setWordIndex] = useState(0);
   const wordList = words.filter(word => !word.complete);
 
@@ -26,13 +27,13 @@ const SightWords = (props) => {
     setWordIndex(wordIndex - 1);
   }
 
-  if (!wordList.length) return <h3>You don't have any words yet...</h3>
+  if (!wordList.length) return <NoItems type="sight words" redirectTo='update-word-list' />
 
   return (
     <Container className="site-content">
       <Row className="site-content_content">
         <Col xs={12} >
-          <Word word={wordList[wordIndex]} />
+          <Word selectedWord={wordList[wordIndex]} />
         </Col>
         <Col xs={6} className="site-content_content-buttons">
           {wordIndex > 0 ? wordIndex < wordList.length ? <FontAwesomeIcon icon={faArrowAltCircleLeft} onClick={decrementWordIndex} className="site-content_content-buttons-left" /> : null : null}

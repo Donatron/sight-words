@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Container, Row, Col, Form, FormGroup, Label, Input, Button, } from 'reactstrap';
+import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
-import Error from './Error';
+import AlertBox from './AlertBox';
 import { loginUser, clearError } from '../store/actions';
 
-
 const Login = (props) => {
-  const { error, clearError, loginUser } = props;
-  const [emailAddress, setEmailAddress] = useState(null);
+  const { alert, clearError, loginUser } = props;
+  const [userName, setUserName] = useState(null);
   const [userPassword, setUserPassword] = useState(null);
 
   const handleSubmit = () => {
     const user = {
-      email: emailAddress,
+      userName: userName,
       password: userPassword
     }
 
@@ -27,6 +26,11 @@ const Login = (props) => {
   return (
     <Container className="site-content">
       <Row className="site-content_content">
+        {
+          alert.showAlert && alert.location === 'login'
+            ? <AlertBox style={alert.alertType} message={alert.message} />
+            : null
+        }
         <Col
           xs={{ size: 10, offset: 1 }}
           lg={{ size: 6, offset: 3 }}
@@ -39,13 +43,13 @@ const Login = (props) => {
               </Link>
             </span>
             <FormGroup className="site-content_content-login-form">
-              <Label for="email">Email</Label>
+              <Label for="email">Email / Username</Label>
               <Input
                 id="email"
                 name="email"
-                placeholder="Email address"
+                placeholder="Email or username"
                 type="email"
-                onChange={(e) => setEmailAddress(e.target.value)}
+                onChange={(e) => setUserName(e.target.value)}
               />
               <Label for="email">Password</Label>
               <Input
@@ -55,21 +59,18 @@ const Login = (props) => {
                 type="password"
                 onChange={(e) => setUserPassword(e.target.value)}
               />
-              {
-                error && <Error message={error.message} />
-              }
             </FormGroup>
             <Button color="secondary" onClick={handleSubmit}>Log In</Button>
           </Form>
-        </Col>
-      </Row>
-    </Container>
+        </Col >
+      </Row >
+    </Container >
   );
 }
 
 const mapStateToProps = state => {
   return {
-    error: state.error
+    alert: state.alert
   }
 }
 

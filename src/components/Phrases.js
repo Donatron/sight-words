@@ -5,18 +5,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleRight, faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
 import Phrase from './Phrase';
+import NoItems from './NoItems';
 
 import { fetchPhrases } from '../store/actions'
 
 const Phrases = (props) => {
-  const { phrases, auth, user, fetchPhrases } = props;
+  const { phrases, auth, fetchPhrases } = props;
   const [phraseIndex, setPhraseIndex] = useState(0);
   const phraseList = phrases.filter(phrase => !phrase.complete);
 
   useEffect(() => {
     if (!auth.token) return;
     fetchPhrases(auth.token);
-  });
+  }, [auth.token, fetchPhrases]);
 
   const incrementPhraseIndex = () => {
     setPhraseIndex(phraseIndex + 1);
@@ -26,7 +27,7 @@ const Phrases = (props) => {
     setPhraseIndex(phraseIndex - 1);
   }
 
-  if (!phraseList.length) return <h3>You don't have any phrases yet...</h3>
+  if (!phraseList.length) return <NoItems type="phrases" redirectTo='update-phrase-list' />
 
   return (
     <Container className="site-content">

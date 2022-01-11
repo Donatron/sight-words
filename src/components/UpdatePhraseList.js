@@ -15,6 +15,7 @@ const UpdatePhraseList = (props) => {
   const {
     phrases,
     token,
+    user,
     fetchPhrases,
     updatePhrase,
     deletePhrase
@@ -85,7 +86,7 @@ const UpdatePhraseList = (props) => {
       />
       <Row className="site-content_phrase-list">
         <Col xs={12}>
-          <h2>Phrase List</h2>
+          <h2>{`${user.username}'s Phrase List`}</h2>
         </Col>
         <Col xs={12} className="site-content_phrase-list-table">
           <div className="add-phrase">
@@ -129,7 +130,8 @@ const UpdatePhraseList = (props) => {
 const mapStateToProps = state => {
   return {
     phrases: state.phrases.phrases,
-    token: state.auth.token
+    token: state.auth.token,
+    user: state.user.user
   }
 }
 

@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import { Container, Row, Col, Button } from 'reactstrap';
 
 import Phrase from './Phrase';
+import NoItems from './NoItems';
 
 const RandomPhrases = (props) => {
   const { phrases } = props;
   const phraseList = phrases.filter(phrase => !phrase.complete);
 
   const generateRandomPhraseIndex = () => {
-    return Math.floor(Math.random() * (phrases.length - 1));
+    return Math.floor(Math.random() * (phrases.length));
   }
 
   const [phraseIndex, setPhraseIndex] = useState(generateRandomPhraseIndex());
@@ -17,6 +18,8 @@ const RandomPhrases = (props) => {
   const handleClick = () => {
     setPhraseIndex(generateRandomPhraseIndex());
   }
+
+  if (!phrases.length) return <NoItems type="phrases" redirectTo='update-phrase-list' />
 
   return (
     <Container className="site-content">

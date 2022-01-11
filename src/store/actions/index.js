@@ -20,6 +20,8 @@ export const UPDATE_PHRASE = 'UPDATE_PHRASE';
 export const DELETE_PHRASE = 'DELETE_PHRASE';
 export const CLEAR_PHRASES = 'CLEAR_PHRASES';
 export const RESET_STATE = 'RESET_STATE';
+export const SHOW_ALERT = 'SHOW_ALERT';
+export const CLEAR_ALERT = 'CLEAR_ALERT';
 
 let serverError = 'System error. Please try again later.';
 
@@ -30,7 +32,7 @@ const setServerError = (err) => {
 
 export const loginUser = (user) => async (dispatch) => {
   const loginData = {
-    email: user.email,
+    userName: user.userName,
     password: user.password
   }
 
@@ -38,21 +40,21 @@ export const loginUser = (user) => async (dispatch) => {
     type: SET_LOADING
   });
 
+  let response;
+
   try {
-    const response = await axios.post(`${rootUrl}/login`, loginData);
+    response = await axios.post(`${rootUrl}/users/login`, loginData);
 
-    if (response.data.status === 'error') {
-      dispatch(setError(response.data.message));
-    } else {
-      dispatch(fetchUser(user.email, response.data.token));
-      dispatch({
-        type: SET_AUTH_TOKEN,
-        payload: response.data.token
-      });
-    }
-
+    dispatch({
+      type: SET_AUTH_TOKEN,
+      payload: `Bearer ${response.data.token}`
+    });
   } catch (err) {
-    dispatch(setError(setServerError(err)));
+    dispatch(showAlert('danger', 'login', err.response.data.message));
+
+    setTimeout(() => {
+      dispatch(clearAlert());
+    }, 5000);
   }
 
   dispatch({
@@ -66,20 +68,23 @@ export const registerUser = (userData) => async (dispatch) => {
   });
 
   try {
-    const response = await axios.post(`${rootUrl}/register`, userData);
+    const response = await axios.post(`${rootUrl}/users/signup`, userData);
 
     if (response.data.status === 'error') {
-      dispatch(setError(response.data.message));
+      dispatch(showAlert('danger', 'login', 'Something went wrong here...'));
+
+      setTimeout(() => {
+        dispatch(clearAlert());
+      }, 5000);
     } else {
-      // TODO do something here...
-      const user = {
-        email: userData.email,
-        password: userData.password
-      }
-      dispatch(loginUser(user));
+      // Show alert
     }
   } catch (err) {
-    dispatch(setError(setServerError(err)));
+    dispatch(showAlert('danger', 'register', err.response.data.message));
+
+    setTimeout(() => {
+      dispatch(clearAlert());
+    }, 5000);
   }
 
   dispatch({
@@ -135,7 +140,7 @@ export const fetchSightWords = (token) => async (dispatch) => {
     } else {
       dispatch({
         type: FETCH_SIGHT_WORDS,
-        payload: response.data.result
+        payload: response.data.data.sightWords
       })
     }
 
@@ -240,7 +245,7 @@ export const fetchPhrases = (token) => async (dispatch) => {
     } else {
       dispatch({
         type: FETCH_PHRASES,
-        payload: response.data.result
+        payload: response.data.data.phrases
       });
     }
   } catch (err) {
@@ -340,5 +345,22 @@ export const setError = (message) => {
 export const clearError = () => {
   return {
     type: CLEAR_ERROR
+  }
+}
+
+export const showAlert = (type, location, message) => {
+  return {
+    type: SHOW_ALERT,
+    payload: {
+      type,
+      location,
+      message
+    }
+  }
+}
+
+export const clearAlert = () => {
+  return {
+    type: CLEAR_ALERT
   }
 }
