@@ -7,7 +7,7 @@ import { faArrowAltCircleRight, faArrowAltCircleLeft } from '@fortawesome/free-s
 import Phrase from './Phrase';
 import NoItems from '../utils/NoItems';
 
-import { fetchPhrases } from '../../store/actions'
+import { fetchPhrases } from '../../store/actions/phrases'
 
 const Phrases = (props) => {
   const { phrases, auth, fetchPhrases } = props;

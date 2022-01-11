@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Navbar, NavbarToggler, Collapse, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
-import { logoutUser } from '../../store/actions'
+import { logoutUser } from '../../store/actions/auth'
 
 const Navigation = (props) => {
   return (

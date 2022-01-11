@@ -7,7 +7,7 @@ import { faArrowAltCircleRight, faArrowAltCircleLeft } from '@fortawesome/free-s
 import Word from './Word';
 import NoItems from '../utils/NoItems';
 
-import { fetchSightWords } from '../../store/actions'
+import { fetchSightWords } from '../../store/actions/sightWords'
 
 const SightWords = (props) => {
   const { auth, fetchSightWords, words } = props;

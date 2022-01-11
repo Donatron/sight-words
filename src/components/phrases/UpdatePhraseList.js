@@ -9,7 +9,7 @@ import AddPhraseModal from '../modals/AddPhraseModal';
 import EditPhraseModal from '../modals/EditPhraseModal';
 import DeleteConfirmModal from '../modals/DeleteConfirmModal';
 
-import { fetchPhrases, updatePhrase, deletePhrase } from '../../store/actions';
+import { fetchPhrases, updatePhrase, deletePhrase } from '../../store/actions/phrases';
 
 const UpdatePhraseList = (props) => {
   const {

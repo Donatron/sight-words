@@ -10,7 +10,7 @@ import {
   FormText
 } from 'reactstrap';
 
-import { insertSightWord } from '../../store/actions';
+import { insertSightWord } from '../../store/actions/sightWords';
 
 const AddWordModal = (props) => {
   const { isOpen, toggleModal, insertSightWord, token } = props;

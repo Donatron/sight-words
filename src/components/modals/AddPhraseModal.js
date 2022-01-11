@@ -9,7 +9,7 @@ import {
   Input
 } from 'reactstrap';
 
-import { insertPhrase } from '../../store/actions';
+import { insertPhrase } from '../../store/actions/phrases';
 
 const AddPhraseModal = (props) => {
   const { isOpen, toggleModal, insertPhrase, token } = props;

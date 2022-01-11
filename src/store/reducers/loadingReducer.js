@@ -1,4 +1,4 @@
-import { SET_LOADING, RESET_STATE } from '../actions';
+import { SET_LOADING, RESET_STATE } from '../actions/types';
 
 const initialState = false;
 

@@ -1,4 +1,4 @@
-import { FETCH_USER, RESET_STATE } from '../actions';
+import { FETCH_USER, RESET_STATE } from '../actions/types';
 
 const initialState = {
   user: {

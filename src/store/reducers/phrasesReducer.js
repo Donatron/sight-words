@@ -5,7 +5,7 @@ import {
   DELETE_PHRASE,
   CLEAR_PHRASES,
   RESET_STATE
-} from '../actions';
+} from '../actions/types';
 
 const initialState = {
   phrases: []

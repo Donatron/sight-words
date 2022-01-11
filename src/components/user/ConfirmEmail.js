@@ -5,7 +5,7 @@ import { Container, Row, Col, Button, } from 'reactstrap';
 
 import AlertBox from '../utils/AlertBox';
 
-import { confirmEmail } from '../../store/actions';
+import { confirmEmail } from '../../store/actions/auth';
 
 const ConfirmEmail = (props) => {
   const { alert, confirmEmail } = props;

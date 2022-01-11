@@ -1,4 +1,4 @@
-import { SHOW_ALERT, CLEAR_ALERT } from '../actions'
+import { SHOW_ALERT, CLEAR_ALERT } from '../actions/types'
 
 const initialState = {
   showAlert: false,

@@ -1,4 +1,8 @@
-import { FETCH_SIGHT_WORDS, CLEAR_SIGHT_WORDS, RESET_STATE } from '../actions';
+import {
+  FETCH_SIGHT_WORDS,
+  CLEAR_SIGHT_WORDS,
+  RESET_STATE
+} from '../actions/types';
 
 const initialState = {
   words: []

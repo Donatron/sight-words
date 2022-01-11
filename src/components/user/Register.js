@@ -6,7 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 import AlertBox from '../utils/AlertBox';
-import { registerUser, clearError } from '../../store/actions';
+import { clearError } from '../../store/actions';
+import { registerUser } from '../../store/actions/auth';
 
 
 const Register = (props) => {

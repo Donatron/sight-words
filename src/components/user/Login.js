@@ -6,7 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 import AlertBox from '../utils/AlertBox';
-import { loginUser, clearError } from '../../store/actions';
+import { clearError } from '../../store/actions';
+import { loginUser } from '../../store/actions/auth';
 
 const Login = (props) => {
   const { alert, clearError, loginUser } = props;

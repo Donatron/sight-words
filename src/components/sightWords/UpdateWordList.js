@@ -8,7 +8,7 @@ import WordDetails from './WordDetails';
 import AddWordModal from '../modals/AddWordModal'
 import DeleteConfirmModal from '../modals/DeleteConfirmModal'
 
-import { fetchSightWords, updateSightWord, deleteSightWord } from '../../store/actions';
+import { fetchSightWords, updateSightWord, deleteSightWord } from '../../store/actions/sightWords';
 
 const UpdateWordList = (props) => {
   const {
