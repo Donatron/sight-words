@@ -41,7 +41,6 @@ const Register = (props) => {
         }
         <Col
           xs={{ size: 10, offset: 1 }}
-          lg={{ size: 6, offset: 3 }}
         >
           <Form className="site-content_content-login">
             <h3>Register</h3>
@@ -51,46 +50,58 @@ const Register = (props) => {
               </Link>
             </span>
             <FormGroup className="site-content_content-login-form">
-              <Label for="name">Name</Label>
-              <Input
-                id="name"
-                name="name"
-                placeholder="Name"
-                type="email"
-                onChange={(e) => handleChange(e)}
-              />
-              <Label for="email">Email</Label>
-              <Input
-                id="email"
-                name="email"
-                placeholder="Email address"
-                type="email"
-                onChange={(e) => handleChange(e)}
-              />
-              <Label for="email">Username</Label>
-              <Input
-                id="userName"
-                name="userName"
-                placeholder="Username"
-                type="text"
-                onChange={(e) => handleChange(e)}
-              />
-              <Label for="email">Password</Label>
-              <Input
-                id="password"
-                name="password"
-                placeholder="Password"
-                type="password"
-                onChange={(e) => handleChange(e)}
-              />
-              <Label for="email">Confirm Password</Label>
-              <Input
-                id="passwordConfirm"
-                name="passwordConfirm"
-                placeholder="Confirm Password"
-                type="password"
-                onChange={(e) => handleChange(e)}
-              />
+              <Row>
+                <Col
+                  xs={12}
+                  md={6}
+                >
+                  <Label for="name">Name</Label>
+                  <Input
+                    id="name"
+                    name="name"
+                    placeholder="Name"
+                    type="email"
+                    onChange={(e) => handleChange(e)}
+                  />
+                  <Label for="email">Email</Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    placeholder="Email address"
+                    type="email"
+                    onChange={(e) => handleChange(e)}
+                  />
+                  <Label for="email">Username</Label>
+                  <Input
+                    id="userName"
+                    name="userName"
+                    placeholder="Username"
+                    type="text"
+                    onChange={(e) => handleChange(e)}
+                  />
+                </Col>
+                <Col
+                  xs={12}
+                  md={6}
+                >
+                  <Label for="email">Password</Label>
+                  <Input
+                    id="password"
+                    name="password"
+                    placeholder="Password"
+                    type="password"
+                    onChange={(e) => handleChange(e)}
+                  />
+                  <Label for="email">Confirm Password</Label>
+                  <Input
+                    id="passwordConfirm"
+                    name="passwordConfirm"
+                    placeholder="Confirm Password"
+                    type="password"
+                    onChange={(e) => handleChange(e)}
+                  />
+                </Col>
+              </Row>
             </FormGroup>
             <Button color="secondary" onClick={handleSubmit}>Register</Button>
           </Form>

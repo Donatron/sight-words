@@ -71,16 +71,54 @@ export const registerUser = (userData) => async (dispatch) => {
     const response = await axios.post(`${rootUrl}/users/signup`, userData);
 
     if (response.data.status === 'error') {
-      dispatch(showAlert('danger', 'login', 'Something went wrong here...'));
+      dispatch(showAlert('danger', 'register', 'Something went wrong here...'));
 
       setTimeout(() => {
         dispatch(clearAlert());
       }, 5000);
     } else {
-      // Show alert
+      dispatch(showAlert('success', 'register', response.data.message));
+
+      setTimeout(() => {
+        dispatch(clearAlert());
+      }, 5000);
     }
   } catch (err) {
     dispatch(showAlert('danger', 'register', err.response.data.message));
+
+    setTimeout(() => {
+      dispatch(clearAlert());
+    }, 5000);
+  }
+
+  dispatch({
+    type: SET_LOADING
+  });
+}
+
+export const confirmEmail = (token) => async (dispatch) => {
+  dispatch({
+    type: SET_LOADING
+  });
+
+  try {
+    const response = await axios.patch(`${rootUrl}/users/emailConfirm/${token}`);
+
+    if (response.data.status === 'error') {
+      dispatch(showAlert('danger', 'confirmEmail', 'Something went wrong here...'));
+
+      setTimeout(() => {
+        dispatch(clearAlert());
+      }, 5000);
+    } else {
+      dispatch(showAlert('success', 'confirmEmail', 'Thanks for confirming your email!'));
+
+      setTimeout(() => {
+        dispatch(clearAlert());
+      }, 5000);
+    }
+  } catch (err) {
+    dispatch(showAlert('danger', 'confirmEmail', err.response.data.message));
 
     setTimeout(() => {
       dispatch(clearAlert());

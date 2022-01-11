@@ -1,6 +1,8 @@
 import { Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import Header from './components/layout/Header';
+import Register from './components/user/Register';
+import ConfirmEmail from './components/user/ConfirmEmail';
 import Login from './components/user/Login';
 import SightWords from './components/sightWords/SightWords';
 import RandomWords from './components/sightWords/RandomWords'
@@ -9,7 +11,6 @@ import Phrases from './components/phrases/Phrases'
 import RandomPhrases from './components/phrases/RandomPhrases'
 import UpdatePhraseList from './components/phrases/UpdatePhraseList';
 import LoadingSpinner from './components/utils/LoadingSpinner';
-import Register from './components/user/Register';
 import NotFound from './components/utils/NotFound';
 
 function App(props) {
@@ -37,6 +38,9 @@ function App(props) {
         </Route>
         <Route exact path="/register">
           {token ? <Redirect to="/" /> : <Register />}
+        </Route>
+        <Route exact path="/confirm-email/:token">
+          {token ? <Redirect to="/" /> : <ConfirmEmail />}
         </Route>
         <Route exact path="/login">
           {token ? <Redirect to="/" /> : <Login />}
