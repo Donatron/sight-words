@@ -25,18 +25,18 @@
   color: $color-secondary;
   min-width: 120px;
 
+  a {
+    color: $color-secondary;
+    text-decoration: none;
+  }
+
   &:hover {
     background-color: $color-secondary;
     border-color: $color-secondary;
     color: white;
-  }
 
-  a {
-    color: $color-secondary;
-    text-decoration: none;
-
-    &:hover {
-      color:  white;
+    a {
+      color: white;
     }
   }
 }

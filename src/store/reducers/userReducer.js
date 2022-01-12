@@ -1,10 +1,7 @@
 import { FETCH_USER, RESET_STATE } from '../actions/types';
 
 const initialState = {
-  user: {
-    id: null,
-    userName: null
-  }
+  user: null
 }
 
 export default function userReducer(state = initialState, action) {

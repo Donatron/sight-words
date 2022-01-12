@@ -1,14 +1,14 @@
 import axios from 'axios';
 
 import rootUrl from '../../config/config';
-import { setRequestHeaders } from '../../utils/utils';
 import { showAlert, clearAlert, setError, setServerError } from './index';
 
 import {
   SET_LOADING,
   SET_AUTH_TOKEN,
   RESET_STATE,
-  FETCH_USER
+  FETCH_USER,
+  SHOW_ALERT
 } from './types';
 
 export const loginUser = (user) => async (dispatch) => {
@@ -29,6 +29,11 @@ export const loginUser = (user) => async (dispatch) => {
     dispatch({
       type: SET_AUTH_TOKEN,
       payload: `Bearer ${response.data.token}`
+    });
+
+    dispatch({
+      type: FETCH_USER,
+      payload: response.data.data.user
     });
   } catch (err) {
     dispatch(showAlert('danger', 'login', err.response.data.message));
@@ -117,29 +122,70 @@ export const logoutUser = () => {
   }
 }
 
-export const fetchUser = (email, token) => async (dispatch) => {
-  const options = setRequestHeaders(token);
-
+export const forgotPassword = (user) => async (dispatch) => {
   dispatch({
     type: SET_LOADING
   });
 
   try {
-    const response = await axios.get(`${rootUrl}/user`, { headers: { ...options } });
+    const response = await axios.post(`${rootUrl}/users/forgotPassword`, user);
 
-    if (response.data.status === 'error') {
-      dispatch(setError(response.data.message));
-    } else {
-      dispatch({
-        type: FETCH_USER,
-        payload: response.data[0]
-      })
-    }
+    dispatch({
+      type: SHOW_ALERT,
+      payload: {
+        type: 'success',
+        location: 'forgotPassword',
+        message: response.data.message
+      }
+    });
+
+    setTimeout(() => {
+      dispatch(clearAlert())
+    }, 5000);
+
   } catch (err) {
-    dispatch(setError(setServerError(err)));
+    dispatch({
+      type: SHOW_ALERT,
+      payload: {
+        type: 'danger',
+        location: 'forgotPassword',
+        message: err.response.data.message
+      }
+    });
+
+    setTimeout(() => {
+      dispatch(clearAlert())
+    }, 5000);
   }
 
   dispatch({
     type: SET_LOADING
   });
 }
+
+// export const fetchUser = (email, token) => async (dispatch) => {
+//   const options = setRequestHeaders(token);
+
+//   dispatch({
+//     type: SET_LOADING
+//   });
+
+//   try {
+//     const response = await axios.get(`${rootUrl}/user`, { headers: { ...options } });
+
+//     if (response.data.status === 'error') {
+//       dispatch(setError(response.data.message));
+//     } else {
+//       dispatch({
+//         type: FETCH_USER,
+//         payload: response.data[0]
+//       })
+//     }
+//   } catch (err) {
+//     dispatch(setError(setServerError(err)));
+//   }
+
+//   dispatch({
+//     type: SET_LOADING
+//   });
+// }

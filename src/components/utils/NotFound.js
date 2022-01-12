@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import { Container, Row, Col, Form, Button, } from 'reactstrap';
 
 
@@ -16,7 +16,9 @@ const NotFound = () => {
           <Form className="site-content_content-login">
             <h3>Not Found</h3>
             <p>Unable to locate a page at {`${process.env.PUBLIC_URL}${location.pathname}`}</p>
-            <Button color="secondary" onClick={() => console.log('Click')}>Return to home page</Button>
+            <Button color="secondary">
+              <Link to='/'>Return to home page</Link>
+            </Button>
           </Form>
         </Col>
       </Row>

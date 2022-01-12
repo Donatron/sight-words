@@ -86,7 +86,7 @@ const UpdatePhraseList = (props) => {
       />
       <Row className="site-content_phrase-list">
         <Col xs={12}>
-          <h2>{`${user.username}'s Phrase List`}</h2>
+          <h2>{`${user.userName}'s Phrase List`}</h2>
         </Col>
         <Col xs={12} className="site-content_phrase-list-table">
           <div className="add-phrase">

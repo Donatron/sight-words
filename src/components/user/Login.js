@@ -39,7 +39,7 @@ const Login = (props) => {
           <Form className="site-content_content-login">
             <h3>Login</h3>
             <span>Don't have an account?{' '}
-              <Link to="/register">Register here {' '}
+              <Link to="/register" className="site-content_content-login-redirect">Register here {' '}
                 {' '} <FontAwesomeIcon icon={faArrowRight} />
               </Link>
             </span>
@@ -61,7 +61,14 @@ const Login = (props) => {
                 onChange={(e) => setUserPassword(e.target.value)}
               />
             </FormGroup>
-            <Button color="secondary" onClick={handleSubmit}>Log In</Button>
+            <div className="site-content_content-login-submit">
+              <Button color="secondary" onClick={handleSubmit}>Log In</Button>
+            </div>
+            <span>Forgotten your password?{' '}
+              <Link to="/forgot-password" className="site-content_content-login-redirect">
+                Click here to reset it
+              </Link>
+            </span>
           </Form>
         </Col >
       </Row >

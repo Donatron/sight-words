@@ -1,4 +1,8 @@
-import { SET_AUTH_TOKEN, CLEAR_AUTH_TOKEN, RESET_STATE } from '../actions/types';
+import {
+  SET_AUTH_TOKEN,
+  CLEAR_AUTH_TOKEN,
+  RESET_STATE,
+} from '../actions/types';
 
 const initialState = {
   token: null
