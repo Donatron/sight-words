@@ -1,4 +1,5 @@
 import {
+  SET_LOADING,
   SET_ERROR,
   CLEAR_ERROR,
   SHOW_ALERT,
@@ -10,6 +11,12 @@ let serverError = 'System error. Please try again later.';
 export const setServerError = (err) => {
   if (err.response && err.response.data.message) serverError = err.response.data.message;
   return serverError
+}
+
+export const setLoading = () => {
+  return {
+    type: SET_LOADING
+  }
 }
 
 export const setError = (message) => {

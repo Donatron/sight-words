@@ -4,6 +4,7 @@ import Header from './components/layout/Header';
 import Register from './components/user/Register';
 import ConfirmEmail from './components/user/ConfirmEmail';
 import ForgotPassword from './components/user/ForgotPassword';
+import ResetPassword from './components/user/ResetPassword';
 import Login from './components/user/Login';
 import SightWords from './components/sightWords/SightWords';
 import RandomWords from './components/sightWords/RandomWords'
@@ -45,6 +46,9 @@ function App(props) {
         </Route>
         <Route exact path="/forgot-password">
           {token ? <Redirect to="/" /> : <ForgotPassword />}
+        </Route>
+        <Route exact path="/reset-password/:token">
+          {token ? <Redirect to="/" /> : <ResetPassword />}
         </Route>
         <Route exact path="/login">
           {token ? <Redirect to="/" /> : <Login />}
