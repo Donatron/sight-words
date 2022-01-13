@@ -39,16 +39,18 @@ export const insertPhrase = (phrase, token) => async (dispatch) => {
   dispatch(setLoading());
 
   try {
-    const response = await axios.post(`${rootUrl}/phrases-insert`, { phrase }, { headers: { ...options } });
+    await axios.post(`${rootUrl}/phrases`, { phrase }, { headers: { ...options } });
 
-    if (response.data.status === 'error') {
-      dispatch(setError(response.data.message))
-    } else {
-      dispatch(fetchPhrases(token));
-    }
+    dispatch(showAlert('success', 'phrasesList', 'New phrase added successfully'))
+    dispatch(fetchPhrases(token));
+    // }
   } catch (err) {
-    dispatch(setError(setServerError(err)));
+    dispatch(showAlert('danger', 'phrasesList', err.response.data.message));
   }
+
+  setTimeout(() => {
+    dispatch(clearAlert());
+  }, 5000);
 
   dispatch(setLoading());
 }
@@ -59,20 +61,17 @@ export const updatePhrase = (phraseId, token, params) => async (dispatch) => {
   dispatch(setLoading());
 
   try {
-    const response = await axios.put(`${rootUrl}/phrases-update/${phraseId}`, { ...params }, { headers: { ...options } });
+    await axios.patch(`${rootUrl}/phrases/${phraseId}`, { ...params }, { headers: { ...options } });
 
-    if (response.data.status === 'error') {
-      dispatch(setError(response.data.message));
-    } else {
-      dispatch({
-        type: UPDATE_PHRASE
-      });
-    }
-
+    dispatch(showAlert('success', 'phrasesList', 'Phrase updated successfully'));
     dispatch(fetchPhrases(token));
   } catch (err) {
-    dispatch(setError(setServerError(err)));
+    dispatch(showAlert('danger', 'phrasesList', err.response.data.message));
   }
+
+  setTimeout(() => {
+    dispatch(clearAlert());
+  }, 3000);
 
   dispatch(setLoading());
 }
@@ -83,16 +82,18 @@ export const deletePhrase = (phraseId, token) => async (dispatch) => {
   dispatch(setLoading());
 
   try {
-    const response = await axios.delete(`${rootUrl}/phrases-delete/${phraseId}`, { headers: { ...options } }, null);
+    await axios.delete(`${rootUrl}/phrases/${phraseId}`, { headers: { ...options } }, null);
 
-    if (response.data.status === 'error') {
-      dispatch(setError('Unable to delete phrase at the moment. Please try again later.'));
-    } else {
-      dispatch(fetchPhrases(token));
-    }
+    dispatch(showAlert('success', 'phrasesList', 'Phrase deleted successfully'));
+    dispatch(fetchPhrases(token));
+    // }
   } catch (err) {
-    dispatch(setError(setServerError(err)));
+    dispatch(showAlert('danger', 'phrasesList', err.response.data.message));
   }
+
+  setTimeout(() => {
+    dispatch(clearAlert());
+  }, 3000);
 
   dispatch(setLoading());
 }

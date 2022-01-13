@@ -8,11 +8,13 @@ import PhraseDetails from './PhraseDetails';
 import AddPhraseModal from '../modals/AddPhraseModal';
 import EditPhraseModal from '../modals/EditPhraseModal';
 import DeleteConfirmModal from '../modals/DeleteConfirmModal';
+import AlertBox from '../utils/AlertBox';
 
 import { fetchPhrases, updatePhrase, deletePhrase } from '../../store/actions/phrases';
 
 const UpdatePhraseList = (props) => {
   const {
+    alert,
     phrases,
     token,
     user,
@@ -28,7 +30,7 @@ const UpdatePhraseList = (props) => {
   const [showConfirmDeleteModal, setShowConfirmDeletePhraseModal] = useState(false);
   const [phraseId, setPhraseId] = useState(null);
 
-  const selectedPhrase = phrases.filter(phrase => phrase.id === phraseId)[0]
+  const selectedPhrase = phrases.filter(phrase => phrase._id === phraseId)[0]
 
   useEffect(() => {
     if (!phrases.length) fetchPhrases(token);
@@ -85,6 +87,11 @@ const UpdatePhraseList = (props) => {
         onConfirmDelete={handleConfirmDelete}
       />
       <Row className="site-content_phrase-list">
+        {
+          alert.showAlert && alert.location === 'phrasesList'
+            ? <AlertBox style={alert.alertType} message={alert.message} />
+            : null
+        }
         <Col xs={12}>
           <h2>{`${user.userName}'s Phrase List`}</h2>
         </Col>
@@ -113,9 +120,9 @@ const UpdatePhraseList = (props) => {
               {phrases.map(phrase => {
                 return <PhraseDetails
                   selectedPhrase={phrase}
-                  key={phrase.id}
-                  onClickEdit={() => toggleEditPhraseModal(phrase.id)}
-                  onClickDelete={() => toggleConfirmDeleteModal(phrase.id)}
+                  key={phrase._id}
+                  onClickEdit={() => toggleEditPhraseModal(phrase._id)}
+                  onClickDelete={() => toggleConfirmDeleteModal(phrase._id)}
                   onClickComplete={handleClickComplete}
                 />
               })}
@@ -129,6 +136,7 @@ const UpdatePhraseList = (props) => {
 
 const mapStateToProps = state => {
   return {
+    alert: state.alert,
     phrases: state.phrases.phrases,
     token: state.auth.token,
     user: state.user.user

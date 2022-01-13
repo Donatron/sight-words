@@ -18,7 +18,7 @@ const PhraseDetails = (props) => {
       complete: selectedPhrase.complete ? "0" : "1"
     }
 
-    onClickComplete(selectedPhrase.id, token, params);
+    onClickComplete(selectedPhrase._id, token, params);
   }
 
   const handleClickEdit = () => {

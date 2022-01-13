@@ -6,7 +6,6 @@ import { showAlert, clearAlert, setError, setLoading, setServerError } from './i
 
 import {
   FETCH_SIGHT_WORDS,
-  UPDATE_SIGHT_WORD
 } from './types';
 
 export const fetchSightWords = (token) => async (dispatch) => {
@@ -15,7 +14,9 @@ export const fetchSightWords = (token) => async (dispatch) => {
   dispatch(setLoading());
 
   try {
-    const response = await axios.get(`${rootUrl}/sight-words`, { headers: { ...options } });
+    const response = await axios.get(`${rootUrl}/sight-words`,
+      { headers: { ...options } }
+    );
 
     if (response.data.status === 'error') {
       dispatch(setError(response.data.message));
@@ -66,20 +67,21 @@ export const updateSightWord = (wordId, token, params) => async (dispatch) => {
   dispatch(setLoading());
 
   try {
-    const response = await axios.patch(`${rootUrl}/sight-words/${wordId}`, { ...params }, { headers: { ...options } });
+    await axios.patch(`${rootUrl}/sight-words/${wordId}`,
+      { ...params },
+      { headers: { ...options } }
+    );
 
-    if (response.data.status === 'error') {
-      dispatch(setError(response.data.message));
-    } else {
-      dispatch({
-        type: UPDATE_SIGHT_WORD
-      });
-    }
+    dispatch(showAlert('success', 'sightWordsList', 'Sight word updated successfully'));
 
     dispatch(fetchSightWords(token));
   } catch (err) {
-    dispatch(setError(setServerError(err)));
+    dispatch(showAlert('danger', 'sightWordsList', err.response.data.message));
   }
+
+  setTimeout(() => {
+    dispatch(clearAlert());
+  }, 3000);
 
   dispatch(setLoading());
 }
@@ -90,14 +92,13 @@ export const deleteSightWord = (wordId, token) => async (dispatch) => {
   dispatch(setLoading());
 
   try {
-    await axios.delete(`${rootUrl}/sight-words/${wordId}`, { headers: { ...options } }, null);
+    await axios.delete(`${rootUrl}/sight-words/${wordId}`,
+      { headers: { ...options } },
+      null
+    );
 
-    // if (response.data.status === 'error') {
-    //   dispatch(setError(response.data.message));
-    // } else {
     dispatch(showAlert('success', 'sightWordsList', 'Sight word deleted successfully'))
     dispatch(fetchSightWords(token));
-    // }
   } catch (err) {
     dispatch(showAlert('danger', 'sightWordsList', err.response.data.message));
   }
