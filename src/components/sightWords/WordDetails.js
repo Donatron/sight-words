@@ -9,10 +9,10 @@ const WordDetails = (props) => {
 
   const handleClickComplete = (e) => {
     const params = {
-      complete: word.complete ? "0" : "1"
+      complete: !wordObject.complete ? true : false
     }
 
-    onClickComplete(word.id, token, params);
+    onClickComplete(wordObject._id, token, params);
   }
 
   const handleClickEdit = (e) => {

@@ -15,8 +15,6 @@ const ResetPassword = (props) => {
   const [password, setPassword] = useState(null);
   const [passwordConfirm, setPasswordConfirm] = useState(null);
 
-  console.log(token);
-
   const handleSubmit = () => {
     const userData = {
       password,

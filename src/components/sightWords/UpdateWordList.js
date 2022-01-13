@@ -7,11 +7,13 @@ import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import WordDetails from './WordDetails';
 import AddWordModal from '../modals/AddWordModal'
 import DeleteConfirmModal from '../modals/DeleteConfirmModal'
+import AlertBox from '../utils/AlertBox';
 
 import { fetchSightWords, updateSightWord, deleteSightWord } from '../../store/actions/sightWords';
 
 const UpdateWordList = (props) => {
   const {
+    alert,
     words,
     token,
     user,
@@ -64,6 +66,11 @@ const UpdateWordList = (props) => {
         onConfirmDelete={handleConfirmDelete}
       />
       <Row className="site-content_phrase-list">
+        {
+          alert.showAlert && alert.location === 'sightWordsList'
+            ? <AlertBox style={alert.alertType} message={alert.message} />
+            : null
+        }
         <Col xs={12}>
           <h2>{`${user.userName}'s Word List`}</h2>
         </Col>
@@ -95,8 +102,8 @@ const UpdateWordList = (props) => {
               {words.map(word => (
                 <WordDetails
                   wordObject={word}
-                  key={word.id}
-                  onClickDelete={() => toggleConfirmDeleteModal(word.id)}
+                  key={word._id}
+                  onClickDelete={() => toggleConfirmDeleteModal(word._id)}
                   onClickComplete={handleClickComplete}
                 />
               )
@@ -111,6 +118,7 @@ const UpdateWordList = (props) => {
 
 const mapStateToProps = state => {
   return {
+    alert: state.alert,
     words: state.words.words,
     token: state.auth.token,
     user: state.user.user
