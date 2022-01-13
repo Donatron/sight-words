@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +13,7 @@ import { forgotPassword } from '../../store/actions/auth';
 const ForgotPassword = (props) => {
   const { alert, clearError, forgotPassword } = props;
   const [userName, setUserName] = useState(null);
+  const { t } = useTranslation();
 
   const handleSubmit = () => {
     const user = {
@@ -35,9 +37,9 @@ const ForgotPassword = (props) => {
           lg={{ size: 6, offset: 3 }}
         >
           <Form className="site-content_content-login">
-            <h3>Forgot Password</h3>
+            <h3>{t('forgot-password')}</h3>
             <FormGroup className="site-content_content-login-form">
-              <Label for="email">Email / Username</Label>
+              <Label for="email">{t('email')} / {t('username')}</Label>
               <Input
                 id="email"
                 name="email"
@@ -47,11 +49,11 @@ const ForgotPassword = (props) => {
               />
             </FormGroup>
             <div className="site-content_content-login-submit">
-              <Button color="secondary" onClick={handleSubmit}>Password Reset Token</Button>
+              <Button color="secondary" onClick={handleSubmit}>{t('password-reset-token')}</Button>
             </div>
             <span>
               <Link to="/" className="site-content_content-login-redirect">
-                <FontAwesomeIcon icon={faArrowLeft} />Back To Login
+                <FontAwesomeIcon icon={faArrowLeft} />{t('back-to-login')}
               </Link>
             </span>
           </Form>

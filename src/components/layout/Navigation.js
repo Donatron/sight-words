@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { Navbar, NavbarToggler, Collapse, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 import { logoutUser } from '../../store/actions/auth'
 
 const Navigation = (props) => {
+  const { t } = useTranslation();
+
   return (
     <div>
       <Navbar
@@ -25,27 +28,27 @@ const Navigation = (props) => {
                 caret
                 nav
               >
-                Sight Words
+                {t('sight-words')}
               </DropdownToggle>
               <DropdownMenu end>
                 <DropdownItem>
                   <NavItem>
                     <Link to="/">
-                      All Words
+                      {t('all-words')}
                     </Link>
                   </NavItem>
                 </DropdownItem>
                 <DropdownItem>
                   <NavItem>
                     <Link to="/random-words">
-                      Random Words
+                      {t('random-words')}
                     </Link>
                   </NavItem>
                 </DropdownItem>
                 <DropdownItem>
                   <NavItem>
                     <Link to="/update-word-list">
-                      Update Word List
+                      {t('update-word-list')}
                     </Link>
                   </NavItem>
                 </DropdownItem>
@@ -59,27 +62,27 @@ const Navigation = (props) => {
                 caret
                 nav
               >
-                Phrases
+                {t('phrases')}
               </DropdownToggle>
               <DropdownMenu end>
                 <DropdownItem>
                   <NavItem>
                     <Link to="/phrases">
-                      All Phrases
+                      {t('all-phrases')}
                     </Link>
                   </NavItem>
                 </DropdownItem>
                 <DropdownItem>
                   <NavItem>
                     <Link to="/random-phrases">
-                      Random Phrases
+                      {t('random-phrases')}
                     </Link>
                   </NavItem>
                 </DropdownItem>
                 <DropdownItem>
                   <NavItem>
                     <Link to="/update-phrase-list">
-                      Update Phrase List
+                      {t('update-phrase-list')}
                     </Link>
                   </NavItem>
                 </DropdownItem>
@@ -87,7 +90,7 @@ const Navigation = (props) => {
             </UncontrolledDropdown>
             <NavItem>
               <Link to="/" onClick={() => props.logoutUser()}>
-                Logout
+                {t('logout')}
               </Link>
             </NavItem>
           </Nav>

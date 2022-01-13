@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { Container, Row, Col, Table } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
@@ -26,6 +27,7 @@ const UpdateWordList = (props) => {
   const [showAddWordModal, setShowAddWordModal] = useState(false);
   const [showConfirmDeleteModal, setShowConfirmDeleteModal] = useState(false);
   const [wordId, setWordId] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!words.length) fetchSightWords(token);
@@ -72,29 +74,29 @@ const UpdateWordList = (props) => {
             : null
         }
         <Col xs={12}>
-          <h2>{`${user.userName}'s Word List`}</h2>
+          <h2>{`${user.userName}${t('word-list')}`}</h2>
         </Col>
         <Col xs={12} className="site-content_phrase-list-table">
           <div className="add-phrase">
-            <p>Add Word</p> <FontAwesomeIcon icon={faPlusSquare} onClick={handleClickAddWord} />
+            <p>{t('add-word')}</p> <FontAwesomeIcon icon={faPlusSquare} onClick={handleClickAddWord} />
           </div>
           <Table hover>
             <thead>
               <tr>
                 <th>
-                  Word
+                  {t('word')}
                 </th>
                 <th>
-                  Syllabes
+                  {t('syllables')}
                 </th>
                 <th>
-                  Complete
+                  {t('complete')}
                 </th>
                 {/* <th>
                   Edit
                 </th> */}
                 <th>
-                  Delete
+                  {t('delete')}
                 </th>
               </tr>
             </thead>

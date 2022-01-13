@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { Container, Row, Col, Table } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
@@ -29,6 +30,7 @@ const UpdatePhraseList = (props) => {
   const [showEditPhraseModal, setShowEditPhraseModal] = useState(false);
   const [showConfirmDeleteModal, setShowConfirmDeletePhraseModal] = useState(false);
   const [phraseId, setPhraseId] = useState(null);
+  const { t } = useTranslation();
 
   const selectedPhrase = phrases.filter(phrase => phrase._id === phraseId)[0]
 
@@ -93,26 +95,26 @@ const UpdatePhraseList = (props) => {
             : null
         }
         <Col xs={12}>
-          <h2>{`${user.userName}'s Phrase List`}</h2>
+          <h2>{`${user.userName}${t('phrase-list')}`}</h2>
         </Col>
         <Col xs={12} className="site-content_phrase-list-table">
           <div className="add-phrase">
-            <p>Add Phrase</p> <FontAwesomeIcon icon={faPlusSquare} onClick={handleClickAddPhrase} />
+            <p>{t('add-phrase')}</p> <FontAwesomeIcon icon={faPlusSquare} onClick={handleClickAddPhrase} />
           </div>
           <Table hover>
             <thead>
               <tr>
                 <th>
-                  Phrase
+                  {t('phrase')}
                 </th>
                 <th>
-                  Complete
+                  {t('complete')}
                 </th>
                 {/* <th>
                   Edit
                 </th> */}
                 <th>
-                  Delete
+                  {t('delete')}
                 </th>
               </tr>
             </thead>

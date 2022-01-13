@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -14,6 +15,7 @@ const ResetPassword = (props) => {
   const { token } = useParams();
   const [password, setPassword] = useState(null);
   const [passwordConfirm, setPasswordConfirm] = useState(null);
+  const { t } = useTranslation();
 
   const handleSubmit = () => {
     const userData = {
@@ -37,9 +39,9 @@ const ResetPassword = (props) => {
           lg={{ size: 6, offset: 3 }}
         >
           <Form className="site-content_content-login">
-            <h3>Reset Password</h3>
+            <h3>{t('reset-password')}</h3>
             <FormGroup className="site-content_content-login-form">
-              <Label for="email">New Password</Label>
+              <Label for="email">{t('new-password')}</Label>
               <Input
                 id="password"
                 name="password"
@@ -47,7 +49,7 @@ const ResetPassword = (props) => {
                 type="password"
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <Label for="email">Confirm New Password</Label>
+              <Label for="email">{t('confirm-new-password')}</Label>
               <Input
                 id="passwordConfirm"
                 name="passwordConfirm"
@@ -57,11 +59,11 @@ const ResetPassword = (props) => {
               />
             </FormGroup>
             <div className="site-content_content-login-submit">
-              <Button color="secondary" onClick={handleSubmit}>Reset</Button>
+              <Button color="secondary" onClick={handleSubmit}>{t('reset')}</Button>
             </div>
             <span>
               <Link to="/" className="site-content_content-login-redirect">
-                <FontAwesomeIcon icon={faArrowLeft} />Back To Login
+                <FontAwesomeIcon icon={faArrowLeft} />{t('back-to-login')}
               </Link>
             </span>
           </Form>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux'
+import { useTranslation } from "react-i18next";
 import { Container, Row, Col, Button } from 'reactstrap';
 
 import Word from './Word';
@@ -9,6 +10,7 @@ import TextToSpeech from '../utils/TextToSpeech';
 const RandomWords = (props) => {
   const { words } = props;
   const wordList = words.filter(word => !word.complete);
+  const { t } = useTranslation();
 
   const generateRandomWordIndex = () => {
     return Math.floor(Math.random() * wordList.length);
@@ -30,7 +32,7 @@ const RandomWords = (props) => {
         </Col>
         <TextToSpeech text={wordList[wordIndex].word} />
         <Col xs={6} className="site-content_content-buttons">
-          {wordList.length > 1 && <Button color="primary" onClick={handleClick}>Next</Button>}
+          {wordList.length > 1 && <Button color="primary" onClick={handleClick}>{t('next')}</Button>}
         </Col>
       </Row>
     </Container>

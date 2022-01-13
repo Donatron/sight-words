@@ -67,7 +67,7 @@ const Login = (props) => {
             <div className="site-content_content-login-submit">
               <Button color="secondary" onClick={handleSubmit}>{t('login')}</Button>
             </div>
-            <span>{t('forgot-password')}{' '}
+            <span>{t('forgotten-password')}{' '}
               <Link to="/forgot-password" className="site-content_content-login-redirect">
                 {t('click-to-reset')}
               </Link>
