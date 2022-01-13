@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -8,11 +9,13 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import AlertBox from '../utils/AlertBox';
 import { clearError } from '../../store/actions';
 import { loginUser } from '../../store/actions/auth';
+import { t } from 'i18next';
 
 const Login = (props) => {
   const { alert, clearError, loginUser } = props;
   const [userName, setUserName] = useState(null);
   const [userPassword, setUserPassword] = useState(null);
+  const { t } = useTranslation();
 
   const handleSubmit = () => {
     const user = {
@@ -37,14 +40,14 @@ const Login = (props) => {
           lg={{ size: 6, offset: 3 }}
         >
           <Form className="site-content_content-login">
-            <h3>Login</h3>
-            <span>Don't have an account?{' '}
-              <Link to="/register" className="site-content_content-login-redirect">Register here {' '}
+            <h3>{t('login')}</h3>
+            <span>{t('dont-have-account')}{' '}
+              <Link to="/register" className="site-content_content-login-redirect">{t('register-here')} {' '}
                 {' '} <FontAwesomeIcon icon={faArrowRight} />
               </Link>
             </span>
             <FormGroup className="site-content_content-login-form">
-              <Label for="email">Email / Username</Label>
+              <Label for="email">{t('email')} / {t('username')}</Label>
               <Input
                 id="email"
                 name="email"
@@ -52,7 +55,7 @@ const Login = (props) => {
                 type="email"
                 onChange={(e) => setUserName(e.target.value)}
               />
-              <Label for="email">Password</Label>
+              <Label for="email">{t('password')}</Label>
               <Input
                 id="password"
                 name="password"
@@ -62,11 +65,11 @@ const Login = (props) => {
               />
             </FormGroup>
             <div className="site-content_content-login-submit">
-              <Button color="secondary" onClick={handleSubmit}>Log In</Button>
+              <Button color="secondary" onClick={handleSubmit}>{t('login')}</Button>
             </div>
-            <span>Forgotten your password?{' '}
+            <span>{t('forgot-password')}{' '}
               <Link to="/forgot-password" className="site-content_content-login-redirect">
-                Click here to reset it
+                {t('click-to-reset')}
               </Link>
             </span>
           </Form>
