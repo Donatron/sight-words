@@ -15,8 +15,6 @@ const Phrases = (props) => {
   const [phraseIndex, setPhraseIndex] = useState(0);
   const phraseList = phrases.filter(phrase => !phrase.complete);
 
-  console.log(phraseList);
-
   useEffect(() => {
     if (!auth.token) return;
     fetchPhrases(auth.token);
