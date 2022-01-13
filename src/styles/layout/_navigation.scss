@@ -1,0 +1,19 @@
+.navbar {
+  background-color: $color-primary;
+
+  .nav-item {
+    a {
+      color: $color-secondary;
+      padding: 8px;
+      text-decoration: none;
+    }
+
+    .dropdown-item {
+      @include transition;
+
+      &:hover {
+        background-color: $color-primary-shade;
+      }
+    }
+  }
+}

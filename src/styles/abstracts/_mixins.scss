@@ -1,0 +1,10 @@
+@mixin site-wrapper {
+  min-height: 100vh;
+  height: 100%;
+
+  background-color: $white;
+}
+
+@mixin transition {
+  transition: all 0.2s ease-in;
+}

@@ -1,0 +1,57 @@
+.App {
+  @include site-wrapper;
+  text-align: center;
+}
+
+.site-content {
+  min-height: calc(100vh - 100px);
+  height: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+  position: relative;
+
+  &_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 60px 0;
+
+    &-login {
+      a {
+        @include transition;
+
+        color: $color-secondary;
+        text-decoration: none;
+      }
+
+        &-redirect {
+          padding : 10px 6px;
+          font-style: italic;
+
+          &:hover {
+            color: $color-secondary-tint;
+          }
+
+          .fa-arrow-right {
+            margin-left: 4px;
+          }
+
+          .fa-arrow-left {
+            margin-right: 4px;
+          }
+        }
+
+      span {
+        font-size: 0.75em;
+      }
+
+      &-submit {
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  &_phrase-list {
+    padding: 60px 30px;
+  }
+}

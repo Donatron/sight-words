@@ -1,0 +1,46 @@
+.btn-primary {
+  background-color: transparent;
+  border-color: $color-primary;
+  color: $color-primary;
+  min-width: 120px;
+
+  &:hover {
+    background-color: $color-primary-shade;
+    border-color: $color-primary-shade;
+
+  a {
+    color: white;
+  }
+  }
+
+  a {
+    color: $color-primary;
+    text-decoration: none;
+  }
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border-color: $color-secondary;
+  color: $color-secondary;
+  min-width: 120px;
+
+  a {
+    color: $color-secondary;
+    text-decoration: none;
+  }
+
+  &:hover {
+    background-color: $color-secondary;
+    border-color: $color-secondary;
+    color: white;
+
+    a {
+      color: white;
+    }
+  }
+}
+
+  .btn-no-items {
+    margin-top: 60px;
+  }

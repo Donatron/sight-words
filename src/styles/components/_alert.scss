@@ -1,0 +1,27 @@
+.alert-box {
+  display: flex;
+  justify-content: space-between;
+
+  .close {
+    @include transition;
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+
+    &:hover {
+      opacity: 0.4;
+    }
+  }
+}
+
+.alert {
+  &-danger {
+    background-color: $danger-tint;
+    color: $danger-shade;
+  }
+
+  &-success {
+    background-color: $info-tint;
+    color: $info-shade;
+    }
+}

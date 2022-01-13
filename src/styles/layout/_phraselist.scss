@@ -1,0 +1,30 @@
+.site-content_phrase-list {
+  &-table {
+    margin-top: 30px;
+
+    .add-phrase {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      text-align: right;
+      margin-bottom: 30px;
+
+      p {
+        margin-bottom: 0;
+      }
+
+      .fa-plus-square {
+        @include transition;
+        
+        font-size: 1.75rem;
+        margin-left: 15px;
+        color: $info-tint;
+
+        &:hover {
+          color: $info;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
