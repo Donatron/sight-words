@@ -4,9 +4,7 @@ import rootUrl from '../../config/config';
 import { setRequestHeaders } from '../../utils/utils';
 import { showAlert, clearAlert, setError, setLoading, setServerError } from './index';
 
-import {
-  FETCH_SIGHT_WORDS,
-} from './types';
+import { FETCH_SIGHT_WORDS } from './types';
 
 export const fetchSightWords = (token) => async (dispatch) => {
   const options = setRequestHeaders(token);

@@ -7,7 +7,7 @@ import { clearAlert } from '../../store/actions';
 const AlertBox = (props) => {
   const { style, message, clearAlert } = props;
 
-  function closeAlert() {
+  const closeAlert = () => {
     clearAlert();
   }
 

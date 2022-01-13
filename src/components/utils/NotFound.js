@@ -16,9 +16,11 @@ const NotFound = () => {
           <Form className="site-content_content-login">
             <h3>Not Found</h3>
             <p>Unable to locate a page at {`${process.env.PUBLIC_URL}${location.pathname}`}</p>
-            <Button color="secondary">
-              <Link to='/'>Return to home page</Link>
-            </Button>
+            <div className="">
+              <Button color="secondary">
+                <Link to='/'>Return to home page</Link>
+              </Button>
+            </div>
           </Form>
         </Col>
       </Row>

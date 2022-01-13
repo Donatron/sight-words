@@ -23,9 +23,7 @@ export const loginUser = (user) => async (dispatch) => {
     password: user.password
   }
 
-  dispatch({
-    type: SET_LOADING
-  });
+  dispatch(setLoading());
 
   try {
     const response = await axios.post(`${rootUrl}/users/login`, loginData);
@@ -40,15 +38,11 @@ export const loginUser = (user) => async (dispatch) => {
     }, 5000);
   }
 
-  dispatch({
-    type: SET_LOADING
-  });
+  dispatch(setLoading());
 }
 
 export const registerUser = (userData) => async (dispatch) => {
-  dispatch({
-    type: SET_LOADING
-  });
+  dispatch(setLoading());
 
   try {
     const response = await axios.post(`${rootUrl}/users/signup`, userData);
@@ -62,18 +56,13 @@ export const registerUser = (userData) => async (dispatch) => {
     dispatch(clearAlert());
   }, 5000);
 
-  dispatch({
-    type: SET_LOADING
-  });
+  dispatch(setLoading());
 }
 
 export const confirmEmail = (token) => async (dispatch) => {
-  dispatch({
-    type: SET_LOADING
-  });
+  dispatch(setLoading());
 
   try {
-    // TODO! ADD TOKEN AND USER DATA TO STATE AFTER EMAIL CONFIRMATION
     const response = await axios.patch(`${rootUrl}/users/emailConfirm/${token}`);
 
     dispatch(showAlert('success', 'confirmEmail', 'Thanks for confirming your email!'));
@@ -89,9 +78,7 @@ export const confirmEmail = (token) => async (dispatch) => {
     dispatch(clearAlert());
   }, 5000);
 
-  dispatch({
-    type: SET_LOADING
-  });
+  dispatch(setLoading());
 }
 
 export const logoutUser = () => {
@@ -101,9 +88,7 @@ export const logoutUser = () => {
 }
 
 export const forgotPassword = (user) => async (dispatch) => {
-  dispatch({
-    type: SET_LOADING
-  });
+  dispatch(setLoading());
 
   try {
     const response = await axios.post(`${rootUrl}/users/forgotPassword`, user);
@@ -117,9 +102,7 @@ export const forgotPassword = (user) => async (dispatch) => {
     dispatch(clearAlert())
   }, 5000);
 
-  dispatch({
-    type: SET_LOADING
-  });
+  dispatch(setLoading());
 }
 
 export const resetPassword = (userData, token) => async (dispatch) => {

@@ -3,12 +3,7 @@ import axios from 'axios';
 import rootUrl from '../../config/config';
 import { setRequestHeaders } from '../../utils/utils';
 import { showAlert, clearAlert, setError, setLoading, setServerError } from './index';
-
-import {
-  SET_LOADING,
-  FETCH_PHRASES,
-  UPDATE_PHRASE,
-} from './types';
+import { FETCH_PHRASES } from './types';
 
 export const fetchPhrases = (token) => async (dispatch) => {
   const options = setRequestHeaders(token);
