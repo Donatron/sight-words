@@ -4,13 +4,14 @@ import { Container, Row, Col, Button } from 'reactstrap';
 
 import Word from './Word';
 import NoItems from '../utils/NoItems';
+import TextToSpeech from '../utils/TextToSpeech';
 
 const RandomWords = (props) => {
   const { words } = props;
   const wordList = words.filter(word => !word.complete);
 
   const generateRandomWordIndex = () => {
-    return Math.floor(Math.random() * (wordList.length));
+    return Math.floor(Math.random() * wordList.length);
   }
 
   const [wordIndex, setWordIndex] = useState(generateRandomWordIndex());
@@ -27,6 +28,7 @@ const RandomWords = (props) => {
         <Col xs={12} >
           <Word selectedWord={wordList[wordIndex]} />
         </Col>
+        <TextToSpeech text={wordList[wordIndex].word} />
         <Col xs={6} className="site-content_content-buttons">
           {wordList.length > 1 && <Button color="primary" onClick={handleClick}>Next</Button>}
         </Col>
