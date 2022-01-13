@@ -6,6 +6,7 @@ import { faArrowAltCircleRight, faArrowAltCircleLeft } from '@fortawesome/free-s
 
 import Phrase from './Phrase';
 import NoItems from '../utils/NoItems';
+import TextToSpeech from '../utils/TextToSpeech';
 
 import { fetchPhrases } from '../../store/actions/phrases'
 
@@ -33,8 +34,9 @@ const Phrases = (props) => {
     <Container className="site-content">
       <Row className="site-content_content">
         <Col xs={12} >
-          <Phrase selectedPhrase={phrases[phraseIndex]} />
+          <Phrase selectedPhrase={phraseList[phraseIndex]} />
         </Col>
+        <TextToSpeech text={phraseList[phraseIndex].phrase} />
         <Col xs={6} className="site-content_content-buttons">
           {phraseIndex > 0 ? phraseIndex < phraseList.length ? <FontAwesomeIcon icon={faArrowAltCircleLeft} onClick={decrementPhraseIndex} className="site-content_content-buttons-left" /> : null : null}
           {phraseIndex < phraseList.length - 1 ? <FontAwesomeIcon icon={faArrowAltCircleRight} onClick={incrementPhraseIndex} className="site-content_content-buttons-right" /> : null}
