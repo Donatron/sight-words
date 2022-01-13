@@ -3,7 +3,7 @@ import { Spinner } from 'reactstrap';
 
 const LoadingSpinner = () => {
   return (
-    <div className="" style={{ marginTop: "250px", height: "100vh" }}>
+    <div className="loading-spinner">
       <Spinner color="info" />
     </div>
   )

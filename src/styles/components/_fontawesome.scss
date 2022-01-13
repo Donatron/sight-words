@@ -1,0 +1,61 @@
+.fa {
+  &-square {
+    path {
+      fill: $color-secondary-tint;
+      @include transition;
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      path {
+        fill: $color-secondary;
+      }
+    }
+  }
+
+  &-check-square {
+    path {
+      fill: $color-primary-tint;
+      @include transition;
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      path {
+        fill: $color-primary;
+      }
+    }
+  }
+
+  &-edit {
+    path {
+      fill: $color-primary-tint;
+      @include transition;
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      path {
+        fill: $color-primary;
+      }
+    }
+  }
+
+  &-trash-alt {
+    path {
+      fill: $danger-tint;
+      @include transition;
+    }
+    
+    &:hover {
+      cursor: pointer;
+
+      path {
+        fill: $danger;
+      }
+    }
+  }
+}

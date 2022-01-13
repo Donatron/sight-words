@@ -1,0 +1,43 @@
+.modal {
+  &-header {
+    background-color: $color-primary;
+    color: $color-secondary;
+
+    .btn-close {
+      background-color: $color-secondary;
+    }
+  }
+
+  &_delete-confirm {
+    .modal-header {
+      background-color: $danger;
+      color: white;
+    }
+
+    .btn-close {
+      background-color: $danger;
+    }
+
+    .btn-primary {
+      background-color: $danger;
+      border-color: $danger;
+      color: white;
+
+      &:hover {
+        background-color: transparent;
+        color: $danger;
+      }
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      border-color: $info;
+      color: $info;
+
+      &:hover {
+        background-color: $info;
+        color: white;
+      }
+    }
+  }
+}

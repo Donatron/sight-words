@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Phrase = ({ phrase }) => {
-  const { value } = phrase;
+const Phrase = ({ selectedPhrase }) => {
+  const { phrase } = selectedPhrase;
 
   return (
     <div className="">
-      <h3>{value}</h3>
+      <h3>{phrase}</h3>
     </div>
   );
 }
