@@ -31,4 +31,11 @@
       background-color: lighten($color-secondary-tint, 10%);
     }
   }
+
+  @media screen and (max-width: 576px) {
+    
+    &_range {
+      width: 75%;
+    }
+  }
 }

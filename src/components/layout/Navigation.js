@@ -1,21 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Navbar, NavbarToggler, Collapse, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
+import LanguageSelector from '../utils/LanguageSelector';
+
 import { logoutUser } from '../../store/actions/auth'
 
 const Navigation = (props) => {
+  const { onChangeLanguage } = props;
+  const [showNavbar, setShowNavbar] = useState(false);
   const { t } = useTranslation();
+
+  const toggleNavbar = () => {
+    setShowNavbar(!showNavbar);
+  }
 
   return (
     <div>
       <Navbar
         expand="md"
       >
-        <NavbarToggler onClick={function noRefCheck() { }} />
-        <Collapse navbar>
+        <NavbarToggler
+          onClick={toggleNavbar}
+          bg="light"
+          expand="sm"
+          className="mr-2"
+        />
+        <Collapse navbar isOpen={showNavbar}>
           <Nav
             className="me-auto"
             navbar
@@ -27,6 +40,7 @@ const Navigation = (props) => {
               <DropdownToggle
                 caret
                 nav
+                className="someclassname"
               >
                 {t('sight-words')}
               </DropdownToggle>
@@ -88,12 +102,29 @@ const Navigation = (props) => {
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-            <NavItem>
-              <Link to="/" onClick={() => props.logoutUser()}>
-                {t('logout')}
-              </Link>
-            </NavItem>
+            <UncontrolledDropdown
+              inNavbar
+              nav
+            >
+              <DropdownToggle
+                caret
+                nav
+                className="someclassname"
+              >
+                {t('user')}
+              </DropdownToggle>
+              <DropdownMenu end>
+                <DropdownItem>
+                  <NavItem>
+                    <Link to="/" onClick={() => props.logoutUser()}>
+                      {t('logout')}
+                    </Link>
+                  </NavItem>
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
           </Nav>
+          <LanguageSelector onChangeLanguage={onChangeLanguage} />
         </Collapse>
       </Navbar>
     </div >

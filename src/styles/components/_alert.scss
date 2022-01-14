@@ -16,12 +16,12 @@
 
 .alert {
   &-danger {
-    background-color: $danger-tint;
-    color: $danger-shade;
+    background-color: $danger;
+    color: white;
   }
 
   &-success {
-    background-color: $info-tint;
-    color: $info-shade;
+    background-color: $info;
+    color: $white;
     }
 }

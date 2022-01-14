@@ -25,4 +25,16 @@
       left: 45px;
     }
   }
+
+  @media screen and (max-width: 576px) {
+    &-buttons {
+      &-left {
+        margin-left: 24px;
+      }
+
+      &-right {
+        margin-right: 24px;
+      }
+    }
+  }
 }

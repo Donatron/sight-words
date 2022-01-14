@@ -37,9 +37,27 @@ const SightWords = (props) => {
           <Word selectedWord={wordList[wordIndex]} />
         </Col>
         <TextToSpeech text={wordList[wordIndex].word} />
-        <Col xs={6} className="site-content_content-buttons">
-          {wordIndex > 0 ? wordIndex < wordList.length ? <FontAwesomeIcon icon={faArrowAltCircleLeft} onClick={decrementWordIndex} className="site-content_content-buttons-left" /> : null : null}
-          {wordIndex < wordList.length - 1 ? <FontAwesomeIcon icon={faArrowAltCircleRight} onClick={incrementWordIndex} className="site-content_content-buttons-right" /> : null}
+        <Col xs={12} md={6} className="site-content_content-buttons">
+          {
+            wordIndex > 0
+              ? wordIndex < wordList.length
+                ? <FontAwesomeIcon
+                  icon={faArrowAltCircleLeft}
+                  onClick={decrementWordIndex}
+                  className="site-content_content-buttons-left"
+                />
+                : null
+              : null
+          }
+          {
+            wordIndex < wordList.length - 1
+              ? <FontAwesomeIcon
+                icon={faArrowAltCircleRight}
+                onClick={incrementWordIndex}
+                className="site-content_content-buttons-right"
+              />
+              : null
+          }
         </Col>
       </Row>
     </Container>
