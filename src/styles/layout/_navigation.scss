@@ -15,5 +15,19 @@
         background-color: $color-primary-shade;
       }
     }
+
+    .dropdown-menu {
+      background-color: $color-primary;
+      border-color: transparent;
+      text-align: center;
+    }
   }
+
+    &-toggler {
+      background-color: $color-secondary;
+
+      &-icon {
+        background: url('../../assets/img/hamburger-icon.svg');
+      }
+    }
 }

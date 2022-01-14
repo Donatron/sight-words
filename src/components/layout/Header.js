@@ -11,9 +11,11 @@ const Header = (props) => {
 
   return (
     <header className="header">
-      <LanguageSelector onChangeLanguage={onChangeLanguage} />
       <h1>{t('sight-words')}</h1>
-      {token && <Navigation />}
+      {
+        !token && <LanguageSelector onChangeLanguage={onChangeLanguage} />
+      }
+      {token && <Navigation onChangeLanguage={onChangeLanguage} />}
     </header>
   );
 }

@@ -4,7 +4,6 @@ import rootUrl from '../../config/config';
 import { showAlert, clearAlert, setLoading, setServerError } from './index';
 
 import {
-  SET_LOADING,
   SET_AUTH_TOKEN,
   RESET_STATE,
   FETCH_USER,
@@ -33,9 +32,9 @@ export const loginUser = (user) => async (dispatch) => {
   } catch (err) {
     dispatch(showAlert('danger', 'login', err.response.data.message));
 
-    setTimeout(() => {
-      dispatch(clearAlert());
-    }, 5000);
+    // setTimeout(() => {
+    //   dispatch(clearAlert());
+    // }, 5000);
   }
 
   dispatch(setLoading());
