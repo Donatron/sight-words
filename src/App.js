@@ -1,7 +1,7 @@
 import { Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import i18n from 'i18next';
-import { initReactI18next, useTranslation } from 'react-i18next';
+import { initReactI18next } from 'react-i18next';
 
 import Header from './components/layout/Header';
 import Register from './components/user/Register';
@@ -25,23 +25,20 @@ i18n
   .use(initReactI18next)
   .init({
     resources: {
-      en: { translation: translationsEn },
+      gb: { translation: translationsEn },
       th: { translation: translationsTh }
     },
-    lng: 'en',
-    fallbackLng: 'en',
+    lng: 'gb',
+    fallbackLng: 'gb',
     interpolation: { excapeValue: false },
   });
 
 function App(props) {
   const { loading, token } = props;
-  const { t } = useTranslation();
 
-  const onChangeLanguage = (e) => {
-    i18n.changeLanguage(e.target.value)
+  const onChangeLanguage = (language) => {
+    i18n.changeLanguage(language)
   }
-
-  console.log(i18n.language);
 
   return (
     <div className="App">

@@ -3,22 +3,16 @@ import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import Navigation from './Navigation';
+import LanguageSelector from '../utils/LanguageSelector';
 
 const Header = (props) => {
   const { token, onChangeLanguage } = props;
   const { t } = useTranslation();
 
-  const onChange = (e) => {
-    onChangeLanguage(e)
-  }
-
   return (
     <header className="header">
+      <LanguageSelector onChangeLanguage={onChangeLanguage} />
       <h1>{t('sight-words')}</h1>
-      <select onChange={(e) => onChange(e)}>
-        <option value="en">English</option>
-        <option value="th">{t('thai')}</option>
-      </select>
       {token && <Navigation />}
     </header>
   );
