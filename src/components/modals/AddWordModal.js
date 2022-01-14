@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import {
   Modal,
   ModalHeader,
@@ -18,6 +19,7 @@ const AddWordModal = (props) => {
     word: '',
     syllables: ''
   });
+  const { t } = useTranslation();
 
 
   const handleInputChange = (e) => {
@@ -45,7 +47,7 @@ const AddWordModal = (props) => {
       isOpen={isOpen}
     >
       <ModalHeader toggle={toggleModal}>
-        Add New Word
+        {t('add-new-word')}
       </ModalHeader>
       <ModalBody>
         <Input
@@ -54,25 +56,25 @@ const AddWordModal = (props) => {
           value={wordData.word}
           name="word"
         />
-        <FormText>Enter your word here</FormText>
+        <FormText>{t('enter-word-here')}</FormText>
         <Input
           bsSize="sm"
           onChange={(e) => handleInputChange(e)}
           value={wordData.syllables}
           name="syllables"
         />
-        <FormText>Enter syllables, separated by a comma - ","</FormText>
+        <FormText>{t('enter-syllables')}</FormText>
       </ModalBody>
       <ModalFooter>
         <Button
           color="primary"
           onClick={handleAddWordSumbit}
         >
-          Submit
+          {t('submit')}
         </Button>
         {' '}
         <Button onClick={toggleModal}>
-          Cancel
+          {t('cancel')}
         </Button>
       </ModalFooter>
     </Modal>

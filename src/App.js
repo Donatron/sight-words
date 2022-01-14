@@ -1,5 +1,8 @@
 import { Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+
 import Header from './components/layout/Header';
 import Register from './components/user/Register';
 import ConfirmEmail from './components/user/ConfirmEmail';
@@ -15,12 +18,31 @@ import UpdatePhraseList from './components/phrases/UpdatePhraseList';
 import LoadingSpinner from './components/utils/LoadingSpinner';
 import NotFound from './components/utils/NotFound';
 
+import translationsEn from './translations/en.json';
+import translationsTh from './translations/th.json';
+
+i18n
+  .use(initReactI18next)
+  .init({
+    resources: {
+      gb: { translation: translationsEn },
+      th: { translation: translationsTh }
+    },
+    lng: 'gb',
+    fallbackLng: 'gb',
+    interpolation: { excapeValue: false },
+  });
+
 function App(props) {
   const { loading, token } = props;
 
+  const onChangeLanguage = (language) => {
+    i18n.changeLanguage(language)
+  }
+
   return (
     <div className="App">
-      <Header />
+      <Header onChangeLanguage={onChangeLanguage} />
       {loading && <LoadingSpinner />}
       <Switch>
         <Route exact path="/update-phrase-list">

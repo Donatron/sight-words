@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { Container, Row, Col, Button, } from 'reactstrap';
 
@@ -10,6 +11,7 @@ import { confirmEmail } from '../../store/actions/auth';
 const ConfirmEmail = (props) => {
   const { alert, confirmEmail } = props;
   const { token } = useParams();
+  const { t } = useTranslation();
 
   const handleSubmit = () => {
     confirmEmail(token);
@@ -27,7 +29,7 @@ const ConfirmEmail = (props) => {
           xs={{ size: 10, offset: 1 }}
           lg={{ size: 6, offset: 3 }}
         >
-          <Button color="primary" onClick={handleSubmit}>Confirm Email Address</Button>
+          <Button color="primary" onClick={handleSubmit}>{t('confirm-email')}</Button>
         </Col>
       </Row>
     </Container>

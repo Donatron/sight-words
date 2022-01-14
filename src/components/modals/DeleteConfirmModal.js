@@ -5,9 +5,11 @@ import {
   ModalFooter,
   Button,
 } from 'reactstrap';
+import { useTranslation } from 'react-i18next';
 
 const DeleteConfirmModal = (props) => {
   const { isOpen, toggleModal, onConfirmDelete, phraseId } = props;
+  const { t } = useTranslation();
 
   const toggle = () => {
     toggleModal();
@@ -26,18 +28,18 @@ const DeleteConfirmModal = (props) => {
       className="modal_delete-confirm"
     >
       <ModalHeader toggle={toggleModal}>
-        Are You Sure You Want To Delete?
+        {t('are-you-sure-you-want-to-delete')}
       </ModalHeader>
       <ModalFooter>
         <Button
           color="primary"
           onClick={handleConfirmDelete}
         >
-          Confirm
+          {t('confirm')}
         </Button>
         {' '}
         <Button onClick={toggleModal}>
-          Cancel
+          {t('cancel')}
         </Button>
       </ModalFooter>
     </Modal>
