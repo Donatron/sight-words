@@ -6,7 +6,7 @@ const Word = ({ selectedWord }) => {
   const { word, syllables } = selectedWord;
 
   return (
-    <div className="">
+    <div>
       <h3>{word}</h3>
       <Syllables syllables={syllables} />
     </div>

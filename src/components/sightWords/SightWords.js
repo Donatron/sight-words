@@ -6,6 +6,7 @@ import { faArrowAltCircleRight, faArrowAltCircleLeft } from '@fortawesome/free-s
 
 import Word from './Word';
 import NoItems from '../utils/NoItems';
+import TextToSpeech from '../utils/TextToSpeech';
 
 import { fetchSightWords } from '../../store/actions/sightWords'
 
@@ -35,9 +36,32 @@ const SightWords = (props) => {
         <Col xs={12} >
           <Word selectedWord={wordList[wordIndex]} />
         </Col>
-        <Col xs={6} className="site-content_content-buttons">
-          {wordIndex > 0 ? wordIndex < wordList.length ? <FontAwesomeIcon icon={faArrowAltCircleLeft} onClick={decrementWordIndex} className="site-content_content-buttons-left" /> : null : null}
-          {wordIndex < wordList.length - 1 ? <FontAwesomeIcon icon={faArrowAltCircleRight} onClick={incrementWordIndex} className="site-content_content-buttons-right" /> : null}
+        <TextToSpeech text={wordList[wordIndex].word} />
+        <Col
+          xs={12}
+          md={6}
+          className="site-content_content-buttons"
+        >
+          {
+            wordIndex > 0
+              ? wordIndex < wordList.length
+                ? <FontAwesomeIcon
+                  icon={faArrowAltCircleLeft}
+                  onClick={decrementWordIndex}
+                  className="site-content_content-buttons-left"
+                />
+                : null
+              : null
+          }
+          {
+            wordIndex < wordList.length - 1
+              ? <FontAwesomeIcon
+                icon={faArrowAltCircleRight}
+                onClick={incrementWordIndex}
+                className="site-content_content-buttons-right"
+              />
+              : null
+          }
         </Col>
       </Row>
     </Container>

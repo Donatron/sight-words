@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import {
   Modal,
   ModalHeader,
@@ -14,6 +15,7 @@ import { insertPhrase } from '../../store/actions/phrases';
 const AddPhraseModal = (props) => {
   const { isOpen, toggleModal, insertPhrase, token } = props;
   const [phrase, setPhrase] = useState(null);
+  const { t } = useTranslation();
 
 
   const handleInputChange = (e) => {
@@ -41,7 +43,7 @@ const AddPhraseModal = (props) => {
       isOpen={isOpen}
     >
       <ModalHeader toggle={toggleModal}>
-        Add New Phrase
+        {t('add-new-phrase')}
       </ModalHeader>
       <ModalBody>
         <Input
@@ -55,11 +57,11 @@ const AddPhraseModal = (props) => {
           color="primary"
           onClick={handleAddPhraseSumbit}
         >
-          Submit
+          {t('submit')}
         </Button>
         {' '}
         <Button onClick={toggleModal}>
-          Cancel
+          {t('cancel')}
         </Button>
       </ModalFooter>
     </Modal>

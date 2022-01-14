@@ -1,4 +1,8 @@
-import { SET_ERROR, CLEAR_ERROR, RESET_STATE } from '../actions/types';
+import {
+  SET_ERROR,
+  CLEAR_ERROR,
+  RESET_STATE
+} from '../actions/types';
 
 const initialState = {
   message: null

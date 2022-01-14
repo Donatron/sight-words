@@ -1,10 +1,9 @@
 import axios from 'axios';
 
 import rootUrl from '../../config/config';
-import { showAlert, clearAlert, setLoading, setServerError } from './index';
+import { showAlert, clearAlert, setLoading } from './index';
 
 import {
-  SET_LOADING,
   SET_AUTH_TOKEN,
   RESET_STATE,
   FETCH_USER,
@@ -69,13 +68,12 @@ export const confirmEmail = (token) => async (dispatch) => {
 
     dispatch(setAuthToken(response.data.token));
     dispatch(fetchUser(response.data.data.user));
-
   } catch (err) {
     dispatch(showAlert('danger', 'confirmEmail', err.response.data.message));
   }
 
   setTimeout(() => {
-    dispatch(clearAlert());
+    dispatch(clearAlert()); å
   }, 5000);
 
   dispatch(setLoading());

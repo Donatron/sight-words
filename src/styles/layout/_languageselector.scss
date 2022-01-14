@@ -1,0 +1,23 @@
+.language-selector {
+  &_content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    p {
+      margin-bottom: 0;
+    }
+
+    span {
+      color: $color-secondary;
+    }
+
+    #rfs-btn::after {
+      border-top-color: $color-secondary;
+    }
+
+    #rfs-btn[aria-expanded="true"]::after {
+      border-bottom-color: $color-secondary;
+    }
+  }
+}

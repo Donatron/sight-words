@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button, } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +13,7 @@ import { registerUser } from '../../store/actions/auth';
 
 const Register = (props) => {
   const { alert, registerUser } = props;
+  const { t } = useTranslation();
 
   const [formData, setFormData] = useState({
     name: null,
@@ -37,16 +39,19 @@ const Register = (props) => {
       <Row className="site-content_content">
         {
           alert.showAlert && alert.location === 'register'
-            ? <AlertBox style={alert.alertType} message={alert.message} />
+            ? <AlertBox
+              style={alert.alertType}
+              message={alert.message}
+            />
             : null
         }
         <Col
           xs={{ size: 10, offset: 1 }}
         >
           <Form className="site-content_content-login">
-            <h3>Register</h3>
-            <span>Already Registered?{' '}
-              <Link to="/login">Login here {' '}
+            <h3>{t('register')}</h3>
+            <span>{t('already-registered')}{' '}
+              <Link to="/login">{t('login-here')} {' '}
                 {' '} <FontAwesomeIcon icon={faArrowRight} />
               </Link>
             </span>
@@ -56,7 +61,7 @@ const Register = (props) => {
                   xs={12}
                   md={6}
                 >
-                  <Label for="name">Name</Label>
+                  <Label for="name">{t('name')}</Label>
                   <Input
                     id="name"
                     name="name"
@@ -64,7 +69,7 @@ const Register = (props) => {
                     type="email"
                     onChange={(e) => handleChange(e)}
                   />
-                  <Label for="email">Email</Label>
+                  <Label for="email">{t('email')}</Label>
                   <Input
                     id="email"
                     name="email"
@@ -72,7 +77,7 @@ const Register = (props) => {
                     type="email"
                     onChange={(e) => handleChange(e)}
                   />
-                  <Label for="email">Username</Label>
+                  <Label for="email">{t('username')}</Label>
                   <Input
                     id="userName"
                     name="userName"
@@ -85,7 +90,7 @@ const Register = (props) => {
                   xs={12}
                   md={6}
                 >
-                  <Label for="email">Password</Label>
+                  <Label for="email">{t('password')}</Label>
                   <Input
                     id="password"
                     name="password"
@@ -93,7 +98,7 @@ const Register = (props) => {
                     type="password"
                     onChange={(e) => handleChange(e)}
                   />
-                  <Label for="email">Confirm Password</Label>
+                  <Label for="email">{t('confirm-password')}</Label>
                   <Input
                     id="passwordConfirm"
                     name="passwordConfirm"
@@ -104,7 +109,7 @@ const Register = (props) => {
                 </Col>
               </Row>
             </FormGroup>
-            <Button color="secondary" onClick={handleSubmit}>Register</Button>
+            <Button color="secondary" onClick={handleSubmit}>{t('register')}</Button>
           </Form>
         </Col>
       </Row>

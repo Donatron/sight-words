@@ -6,6 +6,7 @@ import { faArrowAltCircleRight, faArrowAltCircleLeft } from '@fortawesome/free-s
 
 import Phrase from './Phrase';
 import NoItems from '../utils/NoItems';
+import TextToSpeech from '../utils/TextToSpeech';
 
 import { fetchPhrases } from '../../store/actions/phrases'
 
@@ -27,17 +28,40 @@ const Phrases = (props) => {
     setPhraseIndex(phraseIndex - 1);
   }
 
-  if (!phraseList.length) return <NoItems type="phrases" redirectTo='update-phrase-list' />
+  if (!phraseList.length) return <NoItems type="phrases" redirectTo="update-phrase-list" />
 
   return (
     <Container className="site-content">
       <Row className="site-content_content">
         <Col xs={12} >
-          <Phrase selectedPhrase={phrases[phraseIndex]} />
+          <Phrase selectedPhrase={phraseList[phraseIndex]} />
         </Col>
-        <Col xs={6} className="site-content_content-buttons">
-          {phraseIndex > 0 ? phraseIndex < phraseList.length ? <FontAwesomeIcon icon={faArrowAltCircleLeft} onClick={decrementPhraseIndex} className="site-content_content-buttons-left" /> : null : null}
-          {phraseIndex < phraseList.length - 1 ? <FontAwesomeIcon icon={faArrowAltCircleRight} onClick={incrementPhraseIndex} className="site-content_content-buttons-right" /> : null}
+        <TextToSpeech text={phraseList[phraseIndex].phrase} />
+        <Col
+          xs={12}
+          md={6}
+          className="site-content_content-buttons"
+        >
+          {
+            phraseIndex > 0
+              ? phraseIndex < phraseList.length
+                ? <FontAwesomeIcon
+                  icon={faArrowAltCircleLeft}
+                  onClick={decrementPhraseIndex}
+                  className="site-content_content-buttons-left"
+                />
+                : null
+              : null
+          }
+          {
+            phraseIndex < phraseList.length - 1
+              ? <FontAwesomeIcon
+                icon={faArrowAltCircleRight}
+                onClick={incrementPhraseIndex}
+                className="site-content_content-buttons-right"
+              />
+              : null
+          }
         </Col>
       </Row>
     </Container>

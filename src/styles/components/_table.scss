@@ -1,0 +1,17 @@
+.table-hover {
+  thead {
+    background-color: $color-primary;
+    color: white;
+  }
+
+    tbody {
+      tr:hover {
+        background-color: $color-secondary-tint;
+
+        th,
+        td {
+          color: white;
+        }
+      }
+    }
+}
