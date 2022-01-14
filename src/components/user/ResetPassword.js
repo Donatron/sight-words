@@ -11,7 +11,7 @@ import { clearError } from '../../store/actions';
 import { resetPassword } from '../../store/actions/auth';
 
 const ResetPassword = (props) => {
-  const { alert, clearError, resetPassword } = props;
+  const { alert, resetPassword } = props;
   const { token } = useParams();
   const [password, setPassword] = useState(null);
   const [passwordConfirm, setPasswordConfirm] = useState(null);
@@ -31,7 +31,10 @@ const ResetPassword = (props) => {
       <Row className="site-content_content">
         {
           alert.showAlert && alert.location === 'resetPassword'
-            ? <AlertBox style={alert.alertType} message={alert.message} />
+            ? <AlertBox
+              style={alert.alertType}
+              message={alert.message}
+            />
             : null
         }
         <Col

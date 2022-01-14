@@ -32,7 +32,15 @@ const RandomPhrases = (props) => {
         </Col>
         <TextToSpeech text={phraseList[phraseIndex].phrase} />
         <Col xs={6} className="site-content_content-buttons">
-          {phraseList.length > 1 && <Button color="primary" onClick={handleClick}>{t('next')}</Button>}
+          {
+            phraseList.length > 1
+            && <Button
+              color="primary"
+              onClick={handleClick}
+            >
+              {t('next')}
+            </Button>
+          }
         </Col>
       </Row>
     </Container>

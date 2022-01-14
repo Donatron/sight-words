@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
@@ -22,14 +22,19 @@ const ConfirmEmail = (props) => {
       <Row className="site-content_content">
         {
           alert.showAlert && alert.location === 'confirmEmail'
-            ? <AlertBox style={alert.alertType} message={alert.message} />
+            ? <AlertBox
+              style={alert.alertType}
+              message={alert.message}
+            />
             : null
         }
         <Col
           xs={{ size: 10, offset: 1 }}
           lg={{ size: 6, offset: 3 }}
         >
-          <Button color="primary" onClick={handleSubmit}>{t('confirm-email')}</Button>
+          <Button color="primary" onClick={handleSubmit}>
+            {t('confirm-email')}
+          </Button>
         </Col>
       </Row>
     </Container>

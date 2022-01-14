@@ -9,7 +9,6 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import AlertBox from '../utils/AlertBox';
 import { clearError } from '../../store/actions';
 import { loginUser } from '../../store/actions/auth';
-import { t } from 'i18next';
 
 const Login = (props) => {
   const { alert, clearError, loginUser } = props;

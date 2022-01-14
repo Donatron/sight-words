@@ -20,7 +20,9 @@ const NotFound = () => {
             <p>{t('unable-to-locate-page')} {`${process.env.PUBLIC_URL}${location.pathname}`}</p>
             <div className="">
               <Button color="secondary">
-                <Link to='/'>{t('return-to-home')}</Link>
+                <Link to='/'>
+                  {t('return-to-home')}
+                </Link>
               </Button>
             </div>
           </Form>

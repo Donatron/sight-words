@@ -16,7 +16,7 @@ const LanguageSelector = ({ onChangeLanguage }) => {
         <ReactFlagsSelect
           selected={selected}
           onSelect={code => setSelected(code)}
-          countries={['GB', 'TH']}
+          countries={["GB", "TH"]}
           placeholder="Select Language"
           onSelect={onSelect}
           showSelectedLabel={false}

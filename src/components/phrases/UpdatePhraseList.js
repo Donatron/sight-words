@@ -91,15 +91,25 @@ const UpdatePhraseList = (props) => {
       <Row className="site-content_phrase-list">
         {
           alert.showAlert && alert.location === 'phrasesList'
-            ? <AlertBox style={alert.alertType} message={alert.message} />
+            ? <AlertBox
+              style={alert.alertType}
+              message={alert.message}
+            />
             : null
         }
         <Col xs={12}>
           <h2>{`${user.userName}${t('phrase-list')}`}</h2>
         </Col>
-        <Col xs={12} className="site-content_phrase-list-table">
+        <Col
+          xs={12}
+          className="site-content_phrase-list-table"
+        >
           <div className="add-phrase">
-            <p>{t('add-phrase')}</p> <FontAwesomeIcon icon={faPlusSquare} onClick={handleClickAddPhrase} />
+            <p>{t('add-phrase')}</p>
+            <FontAwesomeIcon
+              icon={faPlusSquare}
+              onClick={handleClickAddPhrase}
+            />
           </div>
           <Table hover>
             <thead>

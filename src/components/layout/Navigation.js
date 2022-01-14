@@ -2,7 +2,17 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { Navbar, NavbarToggler, Collapse, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import {
+  Navbar,
+  NavbarToggler,
+  Collapse,
+  Nav,
+  NavItem,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from 'reactstrap';
 
 import LanguageSelector from '../utils/LanguageSelector';
 
@@ -19,9 +29,7 @@ const Navigation = (props) => {
 
   return (
     <div>
-      <Navbar
-        expand="md"
-      >
+      <Navbar expand="md" >
         <NavbarToggler
           onClick={toggleNavbar}
           bg="light"
@@ -29,19 +37,9 @@ const Navigation = (props) => {
           className="mr-2"
         />
         <Collapse navbar isOpen={showNavbar}>
-          <Nav
-            className="me-auto"
-            navbar
-          >
-            <UncontrolledDropdown
-              inNavbar
-              nav
-            >
-              <DropdownToggle
-                caret
-                nav
-                className="someclassname"
-              >
+          <Nav className="me-auto" navbar>
+            <UncontrolledDropdown inNavbar nav >
+              <DropdownToggle caret nav>
                 {t('sight-words')}
               </DropdownToggle>
               <DropdownMenu end>
@@ -68,14 +66,8 @@ const Navigation = (props) => {
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-            <UncontrolledDropdown
-              inNavbar
-              nav
-            >
-              <DropdownToggle
-                caret
-                nav
-              >
+            <UncontrolledDropdown inNavbar nav  >
+              <DropdownToggle caret nav >
                 {t('phrases')}
               </DropdownToggle>
               <DropdownMenu end>
@@ -102,15 +94,8 @@ const Navigation = (props) => {
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-            <UncontrolledDropdown
-              inNavbar
-              nav
-            >
-              <DropdownToggle
-                caret
-                nav
-                className="someclassname"
-              >
+            <UncontrolledDropdown inNavbar nav >
+              <DropdownToggle caret nav >
                 {t('user')}
               </DropdownToggle>
               <DropdownMenu end>

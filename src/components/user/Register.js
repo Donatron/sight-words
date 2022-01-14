@@ -39,7 +39,10 @@ const Register = (props) => {
       <Row className="site-content_content">
         {
           alert.showAlert && alert.location === 'register'
-            ? <AlertBox style={alert.alertType} message={alert.message} />
+            ? <AlertBox
+              style={alert.alertType}
+              message={alert.message}
+            />
             : null
         }
         <Col

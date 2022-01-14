@@ -4,7 +4,7 @@ const Phrase = ({ selectedPhrase }) => {
   const { phrase } = selectedPhrase;
 
   return (
-    <div className="">
+    <div>
       <h3>{phrase}</h3>
     </div>
   );

@@ -28,11 +28,21 @@ const RandomWords = (props) => {
     <Container className="site-content">
       <Row className="site-content_content">
         <Col xs={12} >
-          <Word selectedWord={wordList[wordIndex]} />
+          <Word
+            selectedWord={wordList[wordIndex]}
+          />
         </Col>
         <TextToSpeech text={wordList[wordIndex].word} />
         <Col xs={6} className="site-content_content-buttons">
-          {wordList.length > 1 && <Button color="primary" onClick={handleClick}>{t('next')}</Button>}
+          {
+            wordList.length > 1
+            && <Button
+              color="primary"
+              onClick={handleClick}
+            >
+              {t('next')}
+            </Button>
+          }
         </Col>
       </Row>
     </Container>

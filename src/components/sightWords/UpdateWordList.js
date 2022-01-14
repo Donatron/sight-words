@@ -76,9 +76,16 @@ const UpdateWordList = (props) => {
         <Col xs={12}>
           <h2>{`${user.userName}${t('word-list')}`}</h2>
         </Col>
-        <Col xs={12} className="site-content_phrase-list-table">
+        <Col
+          xs={12}
+          className="site-content_phrase-list-table"
+        >
           <div className="add-phrase">
-            <p>{t('add-word')}</p> <FontAwesomeIcon icon={faPlusSquare} onClick={handleClickAddWord} />
+            <p>{t('add-word')}</p>
+            <FontAwesomeIcon
+              icon={faPlusSquare}
+              onClick={handleClickAddWord}
+            />
           </div>
           <Table hover>
             <thead>

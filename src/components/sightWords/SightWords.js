@@ -37,7 +37,11 @@ const SightWords = (props) => {
           <Word selectedWord={wordList[wordIndex]} />
         </Col>
         <TextToSpeech text={wordList[wordIndex].word} />
-        <Col xs={12} md={6} className="site-content_content-buttons">
+        <Col
+          xs={12}
+          md={6}
+          className="site-content_content-buttons"
+        >
           {
             wordIndex > 0
               ? wordIndex < wordList.length

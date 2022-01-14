@@ -28,7 +28,7 @@ const Phrases = (props) => {
     setPhraseIndex(phraseIndex - 1);
   }
 
-  if (!phraseList.length) return <NoItems type="phrases" redirectTo='update-phrase-list' />
+  if (!phraseList.length) return <NoItems type="phrases" redirectTo="update-phrase-list" />
 
   return (
     <Container className="site-content">
@@ -37,7 +37,11 @@ const Phrases = (props) => {
           <Phrase selectedPhrase={phraseList[phraseIndex]} />
         </Col>
         <TextToSpeech text={phraseList[phraseIndex].phrase} />
-        <Col xs={12} md={6} className="site-content_content-buttons">
+        <Col
+          xs={12}
+          md={6}
+          className="site-content_content-buttons"
+        >
           {
             phraseIndex > 0
               ? phraseIndex < phraseList.length

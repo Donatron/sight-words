@@ -29,7 +29,10 @@ const ForgotPassword = (props) => {
       <Row className="site-content_content">
         {
           alert.showAlert && alert.location === 'forgotPassword'
-            ? <AlertBox style={alert.alertType} message={alert.message} />
+            ? <AlertBox
+              style={alert.alertType}
+              message={alert.message}
+            />
             : null
         }
         <Col
@@ -49,11 +52,15 @@ const ForgotPassword = (props) => {
               />
             </FormGroup>
             <div className="site-content_content-login-submit">
-              <Button color="secondary" onClick={handleSubmit}>{t('password-reset-token')}</Button>
+              <Button color="secondary" onClick={handleSubmit}>
+                {t('password-reset-token')}
+              </Button>
             </div>
             <span>
               <Link to="/" className="site-content_content-login-redirect">
-                <FontAwesomeIcon icon={faArrowLeft} />{t('back-to-login')}
+                <FontAwesomeIcon
+                  icon={faArrowLeft}
+                />{t('back-to-login')}
               </Link>
             </span>
           </Form>

@@ -35,13 +35,19 @@ const PhraseDetails = (props) => {
         {phrase}
       </th>
       <td>
-        <FontAwesomeIcon icon={complete ? faCheckSquare : faSquare} onClick={(e) => handleClickComplete(e)} />
+        <FontAwesomeIcon
+          icon={complete ? faCheckSquare : faSquare}
+          onClick={(e) => handleClickComplete(e)}
+        />
       </td>
       {/* <td>
         <FontAwesomeIcon icon={faEdit} onClick={handleClickEdit} />
       </td> */}
       <td>
-        <FontAwesomeIcon icon={faTrashAlt} onClick={handleClickDelete} />
+        <FontAwesomeIcon
+          icon={faTrashAlt}
+          onClick={handleClickDelete}
+        />
       </td>
     </tr>
   );

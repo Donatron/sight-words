@@ -14,7 +14,9 @@ const NoItems = ({ type, redirectTo }) => {
         <Col xs={12} >
           <h2>{t('you-dont-have-any')} {t(typeString)}</h2>
           <Button color="primary" className="btn-no-items">
-            <Link to={`/${redirectTo}`}>{t('add')} {t(typeString)}</Link>
+            <Link to={`/${redirectTo}`}>
+              {t('add')} {t(typeString)}
+            </Link>
           </Button>
         </Col>
       </Row>
