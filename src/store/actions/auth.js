@@ -73,7 +73,7 @@ export const confirmEmail = (token) => async (dispatch) => {
   }
 
   setTimeout(() => {
-    dispatch(clearAlert()); å
+    dispatch(clearAlert());
   }, 5000);
 
   dispatch(setLoading());
