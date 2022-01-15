@@ -54,5 +54,7 @@
   "confirm": "Confirm",
   "you-dont-have-any": "You Don't Have Any ",
   "add": "Add ",
-  "user": "User"
+  "user": "User",
+  "receive-emails": "Receive Emails",
+  "receive-emails-disclaimer": "Check this to receive an email confirmation of your email address on sign up, welcome email and password reset emails if needed. We will not send any marketing or spam email"
 }

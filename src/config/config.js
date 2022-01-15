@@ -1,7 +1,7 @@
 let rootUrl;
 
 if (process.env.NODE_ENV === 'production') {
-  rootUrl = 'https://www.yettobedetermmined.com';
+  rootUrl = 'https://sightwords-app.herokuapp.com';
 } else if (process.env.NODE_ENV === 'development') {
   rootUrl = 'http://localhost:5000'
 }
