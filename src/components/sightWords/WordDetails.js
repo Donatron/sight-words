@@ -28,7 +28,7 @@ const WordDetails = (props) => {
       <th scope="row">
         {word}
       </th>
-      <td>
+      <td className="syllables">
         {syllables}
       </td>
       <td>

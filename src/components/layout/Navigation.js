@@ -45,21 +45,30 @@ const Navigation = (props) => {
               <DropdownMenu end>
                 <DropdownItem>
                   <NavItem>
-                    <Link to="/">
+                    <Link
+                      onClick={toggleNavbar}
+                      to="/"
+                    >
                       {t('all-words')}
                     </Link>
                   </NavItem>
                 </DropdownItem>
                 <DropdownItem>
                   <NavItem>
-                    <Link to="/random-words">
+                    <Link
+                      onClick={toggleNavbar}
+                      to="/random-words"
+                    >
                       {t('random-words')}
                     </Link>
                   </NavItem>
                 </DropdownItem>
                 <DropdownItem>
                   <NavItem>
-                    <Link to="/update-word-list">
+                    <Link
+                      onClick={toggleNavbar}
+                      to="/update-word-list"
+                    >
                       {t('update-word-list')}
                     </Link>
                   </NavItem>
@@ -73,21 +82,30 @@ const Navigation = (props) => {
               <DropdownMenu end>
                 <DropdownItem>
                   <NavItem>
-                    <Link to="/phrases">
+                    <Link
+                      onClick={toggleNavbar}
+                      to="/phrases"
+                    >
                       {t('all-phrases')}
                     </Link>
                   </NavItem>
                 </DropdownItem>
                 <DropdownItem>
                   <NavItem>
-                    <Link to="/random-phrases">
+                    <Link
+                      onClick={toggleNavbar}
+                      to="/random-phrases"
+                    >
                       {t('random-phrases')}
                     </Link>
                   </NavItem>
                 </DropdownItem>
                 <DropdownItem>
                   <NavItem>
-                    <Link to="/update-phrase-list">
+                    <Link
+                      onClick={toggleNavbar}
+                      to="/update-phrase-list"
+                    >
                       {t('update-phrase-list')}
                     </Link>
                   </NavItem>
@@ -101,7 +119,10 @@ const Navigation = (props) => {
               <DropdownMenu end>
                 <DropdownItem>
                   <NavItem>
-                    <Link to="/" onClick={() => props.logoutUser()}>
+                    <Link
+                      onClick={toggleNavbar} t
+                      o="/" onClick={() => props.logoutUser()}
+                    >
                       {t('logout')}
                     </Link>
                   </NavItem>
