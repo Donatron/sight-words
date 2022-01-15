@@ -120,8 +120,11 @@ const Navigation = (props) => {
                 <DropdownItem>
                   <NavItem>
                     <Link
-                      onClick={toggleNavbar} t
-                      o="/" onClick={() => props.logoutUser()}
+                      to="/"
+                      onClick={() => {
+                        toggleNavbar();
+                        props.logoutUser();
+                      }}
                     >
                       {t('logout')}
                     </Link>

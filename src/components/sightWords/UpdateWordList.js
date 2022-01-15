@@ -31,7 +31,7 @@ const UpdateWordList = (props) => {
 
   useEffect(() => {
     if (!words.length) fetchSightWords(token);
-  }, []);
+  }, [fetchSightWords, words.length, token]);
 
   const toggleAddWordModal = () => {
     setShowAddWordModal(!showAddWordModal);

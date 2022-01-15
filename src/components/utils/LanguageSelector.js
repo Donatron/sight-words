@@ -15,7 +15,6 @@ const LanguageSelector = ({ onChangeLanguage }) => {
       <Col xs={12} className="language-selector_content">
         <ReactFlagsSelect
           selected={selected}
-          onSelect={code => setSelected(code)}
           countries={["GB", "TH"]}
           placeholder="Select Language"
           onSelect={onSelect}
