@@ -1,0 +1,16 @@
+.footer {
+  background-color: $color-primary;
+  color: $color-secondary;
+  padding: 30px 15px;
+
+  a {
+    @include transition;
+    
+    color: $color-secondary;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-secondary-tint
+    }
+  }
+}

@@ -4,6 +4,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
 import Register from './components/user/Register';
 import ConfirmEmail from './components/user/ConfirmEmail';
 import ForgotPassword from './components/user/ForgotPassword';
@@ -80,6 +81,7 @@ function App(props) {
         </Route>
         <Route exact component={NotFound} />
       </Switch>
+      <Footer />
     </div>
   );
 }
