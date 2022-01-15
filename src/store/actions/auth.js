@@ -43,10 +43,17 @@ export const loginUser = (user) => async (dispatch) => {
 export const registerUser = (userData) => async (dispatch) => {
   dispatch(setLoading());
 
+  if (!userData.receiveEmails) userData.emailConfirmed = true;
+
   try {
     const response = await axios.post(`${rootUrl}/users/signup`, userData);
 
-    dispatch(showAlert('success', 'register', response.data.message));
+    if (userData.receiveEmails) {
+      dispatch(showAlert('success', 'register', response.data.message));
+    } else {
+      dispatch(setAuthToken(response.data.token));
+      dispatch(fetchUser(response.data.data.user));
+    }
   } catch (err) {
     dispatch(showAlert('danger', 'register', err.response.data.message));
   }

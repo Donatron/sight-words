@@ -38,3 +38,10 @@
     }
   }
 }
+
+@media screen and (max-width: 576px) {
+  .syllables {
+    display: none;
+    background-color: red;
+  }
+}

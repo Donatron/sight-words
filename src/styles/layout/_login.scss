@@ -18,4 +18,14 @@
   .btn {
     margin-top: 30px;
   }
+
+  .receive-emails {
+    &_label {
+      margin-top: 0;
+    }
+
+    &_disclaimer {
+      font-size: 10px;
+    }
+  }
 }

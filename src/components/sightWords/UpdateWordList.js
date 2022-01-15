@@ -93,7 +93,7 @@ const UpdateWordList = (props) => {
                 <th>
                   {t('word')}
                 </th>
-                <th>
+                <th className="syllables">
                   {t('syllables')}
                 </th>
                 <th>

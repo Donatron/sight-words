@@ -20,14 +20,22 @@ const Register = (props) => {
     email: null,
     userName: null,
     password: null,
-    passwordConfirm: null
-  })
+    passwordConfirm: null,
+    receiveEmails: false
+  });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
-    })
+    });
+  }
+
+  const handleClickReceiveEmails = (e) => {
+    setFormData({
+      ...formData,
+      receiveEmails: !formData.receiveEmails
+    });
   }
 
   const handleSubmit = () => {
@@ -55,65 +63,94 @@ const Register = (props) => {
                 {' '} <FontAwesomeIcon icon={faArrowRight} />
               </Link>
             </span>
-            <FormGroup className="site-content_content-login-form">
+            <div className="site-content_content-login-form">
               <Row>
                 <Col
                   xs={12}
                   md={6}
                 >
-                  <Label for="name">{t('name')}</Label>
-                  <Input
-                    id="name"
-                    name="name"
-                    placeholder="Name"
-                    type="email"
-                    onChange={(e) => handleChange(e)}
-                  />
-                  <Label for="email">{t('email')}</Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    placeholder="Email address"
-                    type="email"
-                    onChange={(e) => handleChange(e)}
-                  />
-                  <Label for="email">{t('username')}</Label>
-                  <Input
-                    id="userName"
-                    name="userName"
-                    placeholder="Username"
-                    type="text"
-                    onChange={(e) => handleChange(e)}
-                  />
+                  <FormGroup>
+                    <Label for="name">{t('name')}</Label>
+                    <Input
+                      id="name"
+                      name="name"
+                      placeholder="Name"
+                      type="email"
+                      onChange={(e) => handleChange(e)}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="email">{t('email')}</Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      placeholder="Email address"
+                      type="email"
+                      onChange={(e) => handleChange(e)}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="email">{t('username')}</Label>
+                    <Input
+                      id="userName"
+                      name="userName"
+                      placeholder="Username"
+                      type="text"
+                      onChange={(e) => handleChange(e)}
+                    />
+                  </FormGroup>
                 </Col>
+
+
                 <Col
                   xs={12}
                   md={6}
                 >
-                  <Label for="email">{t('password')}</Label>
-                  <Input
-                    id="password"
-                    name="password"
-                    placeholder="Password"
-                    type="password"
-                    onChange={(e) => handleChange(e)}
-                  />
-                  <Label for="email">{t('confirm-password')}</Label>
-                  <Input
-                    id="passwordConfirm"
-                    name="passwordConfirm"
-                    placeholder="Confirm Password"
-                    type="password"
-                    onChange={(e) => handleChange(e)}
-                  />
+                  <FormGroup>
+                    <Label for="email">{t('password')}</Label>
+                    <Input
+                      id="password"
+                      name="password"
+                      placeholder="Password"
+                      type="password"
+                      onChange={(e) => handleChange(e)}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="email">{t('confirm-password')}</Label>
+                    <Input
+                      id="passwordConfirm"
+                      name="passwordConfirm"
+                      placeholder="Confirm Password"
+                      type="password"
+                      onChange={(e) => handleChange(e)}
+                    />
+                  </FormGroup>
+                  <Row>
+                    <Col xs={12}>
+                      <FormGroup>
+                        <Input
+                          id="receiveEmails"
+                          name="receiveEmails"
+                          type="checkbox"
+                          onChange={(e) => handleClickReceiveEmails(e)}
+                        />
+                        <Label for="receiveEmails" className="receive-emails_label">
+                          {t('receive-emails')}
+                        </Label>
+                        <br />
+                        <i className="receive-emails_disclaimer">{t('receive-emails-disclaimer')}</i>
+                      </FormGroup>
+                    </Col>
+                  </Row>
                 </Col>
               </Row>
-            </FormGroup>
+            </div>
             <Button color="secondary" onClick={handleSubmit}>{t('register')}</Button>
           </Form>
         </Col>
-      </Row>
-    </Container>
+      </Row >
+    </Container >
   );
 }
 
